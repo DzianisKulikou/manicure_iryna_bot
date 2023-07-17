@@ -1,8 +1,7 @@
 from environs import Env                             # Позволяет сохранять переменные в окружение
 from aiogram import Bot, Dispatcher
-from aiogram.types import Message
-from aiogram.filters import Text, Command, BaseFilter
 from config_data.config import load_config
+from handlers import other_handlers, user_handlers   # Импортируем роутеры из хэндлеров
 
 
 env = Env()              # Создаем экземпляр класса Env
@@ -15,13 +14,9 @@ bot_token = env('bot_token')       # Сохраняем значение пер�
 bot: Bot = Bot(config.tg_bot.token)
 dp: Dispatcher = Dispatcher()
 
-
-# Этот хэндлер будет срабатывать на команду "/start"
-@dp.message(Command(commands=['start']))
-async def process_start_command(message: Message):
-    await message.answer('Привет!\nЯ бот Ирины Куликовой!\n'
-                         'Я могу рассказать вам всю информацию о её деятельности мастером по маникюру!')
-    print(message.from_user.id)
+# Регистрируем роутеры в диспетчере
+dp.include_router(user_handlers.router)
+dp.include_router(other_handlers.router)
 
 # Запрос к серверу на получение абдейтов для бота
 if __name__ == '__main__':
