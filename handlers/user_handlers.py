@@ -25,8 +25,7 @@ async def process_help_command(message: Message):
 # Этот хэндлер будет срабатывать на кнопку 'Мой адрес'
 @router.message(Text(text='Мой адрес'))
 async def process_dog_answer(message: Message):
-    await message.answer(text='Warszawa 02-582, ul. Wiktorska 83/87\n'
-                              '300 метров от станции метро Racławicka')
+    await message.answer(text=lexicon_dict_ru['adres'])
     photo = FSInputFile('photo/maps/1.jpg')
     await message.answer_photo(photo=photo)
 
@@ -34,4 +33,4 @@ async def process_dog_answer(message: Message):
 # Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон'
 @router.message(Text(text='Мой контактный телефон'))
 async def process_dog_answer(message: Message):
-    await message.answer(text='+48-451-117-579')
+    await message.answer(text=lexicon_dict_ru['phone'])
