@@ -1,15 +1,15 @@
-from aiogram.types import (KeyboardButton, Message, ReplyKeyboardMarkup,
-                           ReplyKeyboardRemove)
+from aiogram import Bot
+from aiogram.types import BotCommand
 
 
-# Создаем объекты кнопок
-button_1: KeyboardButton = KeyboardButton(text='Мой адрес')
-button_2: KeyboardButton = KeyboardButton(text='Мой контактный телефон')
-button_3: KeyboardButton = KeyboardButton(text='Показать фото маникюра')
-button_4: KeyboardButton = KeyboardButton(text='Показать случайное фото маникюра')
+# Создаем асинхронную функцию для кнопки menu
+async def set_main_menu(bot: Bot):
 
+    # Создаем список с командами и их описанием для кнопки menu
+    main_menu_commands = [
+        BotCommand(command='/start',
+                   description='Запусти меня с начала!'),
+        BotCommand(command='/help',
+                   description='Справка по работе бота')]
 
-# Создаем объект клавиатуры, добавляя в него кнопки
-keyboard: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[button_1, button_2],
-                                                              [button_3],
-                                                              [button_4]], resize_keyboard=True)
+    await bot.set_my_commands(main_menu_commands)

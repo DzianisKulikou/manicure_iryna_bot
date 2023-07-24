@@ -2,7 +2,7 @@ from aiogram import Router
 from aiogram.types import Message, FSInputFile
 from aiogram.filters import Command, CommandStart, Text
 from lexicon.lexicon_ru import lexicon_dict_ru
-from keyboards.set_menu import keyboard
+from keyboards.keyboard_utils import keyboard
 from random import choice
 
 
@@ -15,6 +15,7 @@ photo_nails = ['photo/nails/101.jpg', 'photo/nails/102.jpg', 'photo/nails/103.jp
                'photo/nails/109.jpg', 'photo/nails/110.jpg', 'photo/nails/111.jpg', 'photo/nails/112.jpg']
 
 photo_map = 'photo/maps/1.jpg'
+
 
 # Этот хэндлер срабатывает на команду /start
 @router.message(CommandStart())
@@ -41,7 +42,6 @@ async def process_dog_answer(message: Message):
 @router.message(Text(text='Мой контактный телефон'))
 async def process_dog_answer(message: Message):
     await message.answer(text=lexicon_dict_ru['phone'])
-
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон'
