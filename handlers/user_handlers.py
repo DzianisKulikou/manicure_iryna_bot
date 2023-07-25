@@ -2,7 +2,7 @@ from aiogram import Router
 from aiogram.types import Message, FSInputFile
 from aiogram.filters import Command, CommandStart, Text
 from lexicon.lexicon_ru import lexicon_dict_ru
-from keyboards.keyboard_utils import keyboard
+from keyboards.keyboard_utils import keyboard, keyboard_i
 from random import choice
 
 
@@ -58,3 +58,9 @@ async def process_dog_answer(message: Message):
 async def process_dog_answer(message: Message):
     photo = FSInputFile(choice(photo_nails))
     await message.answer_photo(photo=photo)
+
+
+# Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон'
+@router.message(Text(text='Написать Ирине в Telegram'))
+async def process_dog_answer(message: Message):
+    await message.answer(text=lexicon_dict_ru['me'], reply_markup=keyboard_i)
