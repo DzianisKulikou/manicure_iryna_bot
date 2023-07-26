@@ -1,20 +1,16 @@
 from aiogram import Router
-from aiogram.types import Message, FSInputFile
+from aiogram.types import Message, FSInputFile, CallbackQuery
 from aiogram.filters import Command, CommandStart, Text
 from lexicon.lexicon_ru import lexicon_dict_ru
 from keyboards.keyboard_utils import keyboard, keyboard_i
+from keyboards.pagination_kb import create_pagination_keyboard
 from random import choice
-
+from database.database import users_db, user_dict_template
+from database.database_photo import photo_nails, photo_map
+from copy import deepcopy
 
 # Инициализируем роутер уровня модуля
 router: Router = Router()
-
-# Фотографии ногтей
-photo_nails = ['photo/nails/101.jpg', 'photo/nails/102.jpg', 'photo/nails/103.jpg', 'photo/nails/104.jpg',
-               'photo/nails/105.jpg', 'photo/nails/106.jpg', 'photo/nails/107.jpg', 'photo/nails/108.jpg',
-               'photo/nails/109.jpg', 'photo/nails/110.jpg', 'photo/nails/111.jpg', 'photo/nails/112.jpg']
-
-photo_map = 'photo/maps/1.jpg'
 
 
 # Этот хэндлер срабатывает на команду /start
@@ -22,6 +18,8 @@ photo_map = 'photo/maps/1.jpg'
 async def process_start_command(message: Message):
     await message.answer(text=lexicon_dict_ru['/start'])
     await message.answer(text=lexicon_dict_ru['menu'], reply_markup=keyboard)
+    if message.from_user.id not in users_db:
+        users_db[message.from_user.id] = deepcopy(user_dict_template)
 
 
 # Этот хэндлер срабатывает на команду /help
@@ -45,12 +43,57 @@ async def process_dog_answer(message: Message):
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон'
+# @router.message(Text(text='Показать фото маникюра'))
+# async def process_dog_answer(message: Message):
+#     await message.answer(text=lexicon_dict_ru['nails'])
+#     for i in photo_nails:
+#         photo = FSInputFile(i)
+#         await message.answer_photo(photo=photo)
+
+
 @router.message(Text(text='Показать фото маникюра'))
 async def process_dog_answer(message: Message):
     await message.answer(text=lexicon_dict_ru['nails'])
-    for i in photo_nails:
-        photo = FSInputFile(i)
-        await message.answer_photo(photo=photo)
+    index_photo = users_db[message.from_user.id]['page']
+    photo = FSInputFile(photo_nails[index_photo])
+    await message.answer_photo(photo=photo, reply_markup=create_pagination_keyboard(
+        'backward',
+        f'{users_db[message.from_user.id]["page"]}/{len(photo_nails)}',
+        'forward'))
+
+
+# Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "вперед"
+# во время просмотра фотографий ногтей
+@router.callback_query(Text(text='forward'))
+async def process_forward_press(callback: CallbackQuery):
+    if users_db[callback.from_user.id]['page'] < len(photo_nails):
+        users_db[callback.from_user.id]['page'] += 1
+        index_photo = users_db[callback.from_user.id]['page']
+        print(index_photo)
+        photo = FSInputFile(photo_nails[index_photo])
+        await callback.message.answer_photo(photo=photo,
+                                            reply_markup=create_pagination_keyboard(
+                                                'backward',
+                                                f'{users_db[callback.from_user.id]["page"]}/{len(photo_nails)}',
+                                                'forward'))
+    await callback.answer()
+
+
+# Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "назад"
+# во время просмотра фотографий ногтей
+@router.callback_query(Text(text='backward'))
+async def process_forward_press(callback: CallbackQuery):
+    if users_db[callback.from_user.id]['page'] > 1:
+        users_db[callback.from_user.id]['page'] -= 1
+        index_photo = users_db[callback.from_user.id]['page']
+        print(index_photo)
+        photo = FSInputFile(photo_nails[index_photo])
+        await callback.message.answer_photo(photo=photo,
+                                            reply_markup=create_pagination_keyboard(
+                                                'backward',
+                                                f'{users_db[callback.from_user.id]["page"]}/{len(photo_nails)}',
+                                                'forward'))
+    await callback.answer()
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон'

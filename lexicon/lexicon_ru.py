@@ -15,3 +15,9 @@ lexicon_menu_ru: dict[str, str] = {
     '/st': 'Запусти меня с начала!',
     '/he': 'Справка по работе бота'
 }
+
+lexicon_pagination_kb: dict[str, str] = {
+    'forward': '>>',
+    'backward': '<<'
+}
+
