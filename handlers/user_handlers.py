@@ -70,13 +70,14 @@ async def process_forward_press(callback: CallbackQuery):
     if users_db[callback.from_user.id]['page'] < len(photo_nails):
         users_db[callback.from_user.id]['page'] += 1
         index_photo = users_db[callback.from_user.id]['page']
-        print(index_photo)
         photo = FSInputFile(photo_nails[index_photo])
         await callback.message.answer_photo(photo=photo,
                                             reply_markup=create_pagination_keyboard(
                                                 'backward',
                                                 f'{users_db[callback.from_user.id]["page"]}/{len(photo_nails)}',
                                                 'forward'))
+        # Удаляем сообщение, в котором была нажата кнопка
+        await callback.message.delete()
     await callback.answer()
 
 
@@ -87,13 +88,14 @@ async def process_forward_press(callback: CallbackQuery):
     if users_db[callback.from_user.id]['page'] > 1:
         users_db[callback.from_user.id]['page'] -= 1
         index_photo = users_db[callback.from_user.id]['page']
-        print(index_photo)
         photo = FSInputFile(photo_nails[index_photo])
         await callback.message.answer_photo(photo=photo,
                                             reply_markup=create_pagination_keyboard(
                                                 'backward',
                                                 f'{users_db[callback.from_user.id]["page"]}/{len(photo_nails)}',
                                                 'forward'))
+        # Удаляем сообщение, в котором была нажата кнопка
+        await callback.message.delete()
     await callback.answer()
 
 

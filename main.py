@@ -12,7 +12,7 @@ config = load_config('.env>')
 bot_token = env('bot_token')       # Сохраняем значение переменной окружения в переменную bot_token
 
 # Создаем объекты бота и диспетчера
-bot: Bot = Bot(config.tg_bot.token)
+bot: Bot = Bot(config.tg_bot.token, parse_mode='HTML')
 dp: Dispatcher = Dispatcher()
 
 # Регистрируем роутеры в диспетчере
