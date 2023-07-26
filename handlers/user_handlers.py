@@ -3,6 +3,7 @@ from aiogram.types import Message, FSInputFile, CallbackQuery
 from aiogram.filters import Command, CommandStart, Text
 from lexicon.lexicon_ru import lexicon_dict_ru
 from keyboards.keyboard_utils import keyboard, keyboard_i
+from keyboards.keyboard_manicure import keyboard_manicure
 from keyboards.pagination_kb import create_pagination_keyboard
 from random import choice
 from database.database import users_db, user_dict_template
@@ -51,7 +52,7 @@ async def process_dog_answer(message: Message):
 #         await message.answer_photo(photo=photo)
 
 
-@router.message(Text(text='Показать фото маникюра'))
+@router.message(Text(text='База фотографий моих работ маникюра'))
 async def process_dog_answer(message: Message):
     await message.answer(text=lexicon_dict_ru['nails'])
     index_photo = users_db[message.from_user.id]['page']
@@ -97,8 +98,9 @@ async def process_forward_press(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон'
-@router.message(Text(text='Показать случайное фото маникюра'))
+@router.message(Text(text='Показать случайную фотографию моего маникюра'))
 async def process_dog_answer(message: Message):
+    await message.answer(text=lexicon_dict_ru['photo_selection'])
     photo = FSInputFile(choice(photo_nails))
     await message.answer_photo(photo=photo)
 
@@ -107,3 +109,15 @@ async def process_dog_answer(message: Message):
 @router.message(Text(text='Написать Ирине в Telegram'))
 async def process_dog_answer(message: Message):
     await message.answer(text=lexicon_dict_ru['me'], reply_markup=keyboard_i)
+
+
+# Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон'
+@router.message(Text(text='Вся информация о работе мастера'))
+async def process_dog_answer(message: Message):
+    await message.answer(text=lexicon_dict_ru['start_manicure'], reply_markup=keyboard_manicure)
+
+
+# Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон'
+@router.message(Text(text='Вернуться в главное меню'))
+async def process_dog_answer(message: Message):
+    await message.answer(text=lexicon_dict_ru['start_menu'], reply_markup=keyboard)
