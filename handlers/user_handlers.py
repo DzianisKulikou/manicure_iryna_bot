@@ -43,8 +43,8 @@ async def process_dog_answer(message: Message):
     await message.answer(text=lexicon_dict_ru['phone'])
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон'
-# @router.message(Text(text='Показать фото маникюра'))
+# Этот хэндлер будет срабатывать на кнопку 'База фотографий моих работ маникюра' новое сообщение с фото
+# @router.message(Text(text='База фотографий моих работ маникюра'))
 # async def process_dog_answer(message: Message):
 #     await message.answer(text=lexicon_dict_ru['nails'])
 #     for i in photo_nails:
@@ -52,6 +52,7 @@ async def process_dog_answer(message: Message):
 #         await message.answer_photo(photo=photo)
 
 
+# Этот хэндлер будет срабатывать на кнопку 'База фотографий моих работ маникюра' с удалением старого фото
 @router.message(Text(text='База фотографий моих работ маникюра'))
 async def process_dog_answer(message: Message):
     await message.answer(text=lexicon_dict_ru['nails'])
@@ -99,7 +100,7 @@ async def process_forward_press(callback: CallbackQuery):
     await callback.answer()
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон'
+# Этот хэндлер будет срабатывать на кнопку 'Показать случайную фотографию моего маникюра'
 @router.message(Text(text='Показать случайную фотографию моего маникюра'))
 async def process_dog_answer(message: Message):
     await message.answer(text=lexicon_dict_ru['photo_selection'])
@@ -107,19 +108,19 @@ async def process_dog_answer(message: Message):
     await message.answer_photo(photo=photo)
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон'
+# Этот хэндлер будет срабатывать на кнопку 'Написать Ирине в Telegram'
 @router.message(Text(text='Написать Ирине в Telegram'))
 async def process_dog_answer(message: Message):
     await message.answer(text=lexicon_dict_ru['me'], reply_markup=keyboard_i)
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон'
+# Этот хэндлер будет срабатывать на кнопку 'Вся информация о работе мастера'
 @router.message(Text(text='Вся информация о работе мастера'))
 async def process_dog_answer(message: Message):
     await message.answer(text=lexicon_dict_ru['start_manicure'], reply_markup=keyboard_manicure)
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон'
+# Этот хэндлер будет срабатывать на кнопку 'Вернуться в главное меню'
 @router.message(Text(text='Вернуться в главное меню'))
 async def process_dog_answer(message: Message):
     await message.answer(text=lexicon_dict_ru['start_menu'], reply_markup=keyboard)
