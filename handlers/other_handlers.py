@@ -7,8 +7,8 @@ from lexicon.lexicon_ru import lexicon_dict_ru
 router: Router = Router()
 
 
-# Этот хэндлер будет срабатывать на любые ваши сообщения,
-# кроме команд "/start" и "/help"
+# Этот хэндлер будет срабатывать на все сообщения, которые не отловят остальные хэндлеры
 @router.message()
 async def send_echo(message: Message):
-    await message.answer(text=lexicon_dict_ru['unknown_message'])
+    if message.from_user.id == message.chat.id:
+        await message.answer(text=lexicon_dict_ru['unknown_message'])
