@@ -2,7 +2,7 @@ from aiogram import Router
 from aiogram.types import Message, FSInputFile, CallbackQuery
 from aiogram.filters import Command, CommandStart, Text
 from lexicon.lexicon_ru import lexicon_dict_ru, lexicon_disinfection
-from keyboards.keyboard_utils import keyboard, keyboard_i
+from keyboards.keyboard_utils import keyboard, keyboard_i_1, keyboard_i_2
 from keyboards.keyboard_manicure import keyboard_manicure, keyboard_in_1
 from keyboards.pagination_kb import create_pagination_keyboard
 from random import choice
@@ -115,7 +115,7 @@ async def process_dog_answer(message: Message):
 @router.message(Text(text='Написать Ирине в Telegram'))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
-        await message.answer(text=lexicon_dict_ru['me'], reply_markup=keyboard_i)
+        await message.answer(text=lexicon_dict_ru['me'], reply_markup=keyboard_i_1)
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Вся информация о работе мастера'
@@ -132,18 +132,11 @@ async def process_dog_answer(message: Message):
         await message.answer(text=lexicon_dict_ru['start_menu'], reply_markup=keyboard)
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Дезинфекция и стерилизация инструмента' [button_7]
-# @router.callback_query(Text(text='Дезинфекция и стерилизация инструмента'))
-# async def process_dog_answer(callback: CallbackQuery):
-#     await callback.message.answer(text=lexicon_disinfection['phrase1'])
-
-    # await message.answer_photo(photo=FSInputFile(photo_disinfection[1]))
-    # await message.answer(text=lexicon_disinfection['phrase2'])
-    # await message.answer_photo(photo=FSInputFile(photo_disinfection[2]))
-    # await message.answer_photo(photo=FSInputFile(photo_disinfection[3]))
-    # await message.answer(text=lexicon_disinfection['phrase3'])
-    # await message.answer_photo(photo=FSInputFile(photo_disinfection[4]))
-    # await message.answer_photo(photo=FSInputFile(photo_disinfection[5]))
+# Этот хэндлер будет срабатывать на кнопку 'Информация о разработчике бота' [button_100]
+@router.message(Text(text='Информация о разработчике бота'))
+async def process_dog_answer(message: Message):
+    if message.from_user.id == message.chat.id:
+        await message.answer(text=lexicon_dict_ru['developer'], reply_markup=keyboard_i_2)
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Дезинфекция и стерилизация инструмента' [button_7]
