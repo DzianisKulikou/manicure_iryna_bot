@@ -3,7 +3,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 from lexicon.lexicon_ru import lexicon_pagination_kb
 
 
-# Функция, генерирующая клавиатуру для страницы книги
+# Функция, генерирующая клавиатуру для листания страниц
 def create_pagination_keyboard(*buttons: str) -> InlineKeyboardMarkup:
     # Инициализируем билдер
     kb_builder: InlineKeyboardBuilder = InlineKeyboardBuilder()

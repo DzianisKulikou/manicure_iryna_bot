@@ -14,5 +14,5 @@ photo_disinfection: dict[int, str] = {1: 'photo/disinfection/201.jpg', 2: 'photo
                                       5: 'photo/disinfection/205.jpg', 6: 'photo/disinfection/206.jpg',
                                       7: 'photo/disinfection/207.jpg', 8: 'photo/disinfection/208.jpg',
                                       9: 'photo/disinfection/209.jpg', 10: 'photo/disinfection/210.jpg',
-                                      11: 'photo/disinfection/211.jpg', 12: 'photo/disinfection/212.jpg'
+                                      11: 'photo/disinfection/211.jpg'
                                       }
