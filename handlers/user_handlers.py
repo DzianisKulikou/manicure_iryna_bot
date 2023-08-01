@@ -5,7 +5,7 @@ from lexicon.lexicon_ru import lexicon_dict_ru, lexicon_disinfection
 from keyboards.keyboard_utils import keyboard, keyboard_i_1, keyboard_i_2
 from keyboards.keyboard_manicure import keyboard_manicure, keyboard_in_1
 from keyboards.pagination_kb import create_pagination_keyboard
-from random import choice
+from random import randint
 from database.database import users_db, user_dict_template
 from database.database_photo import photo_nails, photo_map, photo_disinfection
 from copy import deepcopy
@@ -108,8 +108,14 @@ async def process_forward_press(callback: CallbackQuery):
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['photo_selection'])
-        await message.answer_photo(photo=FSInputFile(choice(photo_nails)))
+        await message.answer_photo(photo=FSInputFile(photo_nails[randint(1, 15)])) # Список фото
 
+
+# Этот хэндлер будет срабатывать на кнопку 'Прайс лист'
+@router.message(Text(text='Прайс лист'))
+async def process_dog_answer(message: Message):
+    if message.from_user.id == message.chat.id:
+        await message.answer(text=lexicon_dict_ru['price list'])
 
 # Этот хэндлер будет срабатывать на кнопку 'Написать Ирине в Telegram'
 @router.message(Text(text='Написать Ирине в Telegram'))
