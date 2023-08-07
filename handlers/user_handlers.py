@@ -2,8 +2,9 @@ from aiogram import Router
 from aiogram.types import Message, FSInputFile, CallbackQuery
 from aiogram.filters import Command, CommandStart, Text
 from lexicon.lexicon_ru import lexicon_dict_ru, lexicon_disinfection
-from keyboards.keyboard_utils import keyboard, keyboard_i_1, keyboard_i_2
+from keyboards.kb_main import keyboard, keyboard_i_1, keyboard_i_2
 from keyboards.keyboard_manicure import keyboard_manicure, keyboard_in_1
+from keyboards.kb_kontakt import keyboard_kontakt
 from keyboards.pagination_kb import create_pagination_keyboard
 from random import randint
 from database.database import users_db, user_dict_template
@@ -131,6 +132,13 @@ async def process_dog_answer(message: Message):
         await message.answer(text=lexicon_dict_ru['start_manicure'], reply_markup=keyboard_manicure)
 
 
+# Этот хэндлер будет срабатывать на кнопку 'Мои контактные данные'
+@router.message(Text(text='Мои контактные данные'))
+async def process_dog_answer(message: Message):
+    if message.from_user.id == message.chat.id:
+        await message.answer(text=lexicon_dict_ru['kontakt'], reply_markup=keyboard_kontakt)
+
+
 # Этот хэндлер будет срабатывать на кнопку 'Вернуться в главное меню' [button_10]
 @router.message(Text(text='Вернуться в главное меню'))
 async def process_dog_answer(message: Message):
@@ -150,6 +158,7 @@ async def process_dog_answer(message: Message):
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_disinfection['phrase1'], reply_markup=keyboard_in_1)
+
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "Далее"
 # во время просмотра фотографий ногтей

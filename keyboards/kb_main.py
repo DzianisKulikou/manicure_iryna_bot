@@ -3,15 +3,13 @@ from lexicon.lexicon_ru import lexicon_button
 
 
 # Создаем объекты кнопок 'Главное Меню'
-button_1: KeyboardButton = KeyboardButton(text=lexicon_button['button_1'])
-button_2: KeyboardButton = KeyboardButton(text=lexicon_button['button_2'])
-button_5: KeyboardButton = KeyboardButton(text=lexicon_button['button_5'])
 button_6: KeyboardButton = KeyboardButton(text=lexicon_button['button_6'])
+button_9: KeyboardButton = KeyboardButton(text=lexicon_button['button_9'])
 button_8: KeyboardButton = KeyboardButton(text=lexicon_button['button_8'])
 button_100: KeyboardButton = KeyboardButton(text=lexicon_button['button_100'])
 
 # Создаем объект клавиатуры, добавляя в него кнопки 'Главное Меню'
-keyboard: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[button_6], [button_8], [button_1, button_2], [button_5],
+keyboard: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[button_6], [button_8], [button_9],
                                                               [button_100]],
                                                               resize_keyboard=True)
 

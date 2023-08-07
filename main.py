@@ -8,7 +8,7 @@ from keyboards.set_menu import set_main_menu
 env = Env()              # Создаем экземпляр класса Env
 env.read_env()           # Методом read_env() читаем файл .env и загружаем из него переменные в окружение
 
-config = load_config('.env>')
+config = load_config('.env')
 bot_token = env('bot_token')       # Сохраняем значение переменной окружения в переменную bot_token
 
 # Создаем объекты бота и диспетчера
