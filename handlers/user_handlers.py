@@ -2,9 +2,9 @@ from aiogram import Router
 from aiogram.types import Message, FSInputFile, CallbackQuery
 from aiogram.filters import Command, CommandStart, Text
 from lexicon.lexicon_ru import lexicon_dict_ru, lexicon_disinfection
-from keyboards.kb_main import keyboard, keyboard_i_1, keyboard_i_2
+from keyboards.kb_main import keyboard, keyboard_i_2
 from keyboards.keyboard_manicure import keyboard_manicure, keyboard_in_1
-from keyboards.kb_kontakt import keyboard_kontakt
+from keyboards.kb_kontakt import keyboard_kontakt, keyboard_i_1
 from keyboards.pagination_kb import create_pagination_keyboard
 from random import randint
 from database.database import users_db, user_dict_template
