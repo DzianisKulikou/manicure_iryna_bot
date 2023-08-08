@@ -1,5 +1,8 @@
 lexicon_dict_ru: dict[str, str] = {
-    '/start': '<b>Привет!\nЯ бот Ирины Куликовой!</b>\n'
+    '/start': 'Здравствуйте, на каком языке вы предпочитаете общаться?\n\n'
+              'Hello, what language do you prefer to communicate in?\n\n'
+              'Witam, w jakim języku wolisz się komunikować?',
+    'start': '<b>Привет!\nЯ бот Ирины Куликовой!</b>\n'
               'Я могу рассказать вам всю информацию о её деятельности мастером по маникюру!\n'
               '<span class="tg-spoiler">_____________________________________</span>',
     '/help': 'У меня вы можете узнать всё, о работе Ирины Куликовой Мастером по маникюру!\n'
@@ -40,7 +43,7 @@ lexicon_dict_ru: dict[str, str] = {
 }
 
 lexicon_menu_ru: dict[str, str] = {'/st': 'Запусти меня с начала!',
-                                   '/he': 'Справка по работе бота'
+                                   '/he': 'Справка по работе бота!'
                                    }
 
 lexicon_pagination_kb: dict[str, str] = {'forward': '>>',
@@ -63,6 +66,11 @@ lexicon_button: dict[str, str] = {'button_1': 'Мой адрес',
                                   }
 
 lexicon_button_in: dict[str, str] = {'button_in_1': 'Дальше'}
+
+button_in_lg: dict[str, str] = {'button_in_lg1': 'Русский',
+                                'button_in_lg2': 'English',
+                                'button_in_lg3': 'Polski'
+                                }
 
 lexicon_disinfection: dict[str, str] = {
     'phrase1': 'Все что нужно для проведения дезинфекции и стерилизации инструментов маникюрных!',

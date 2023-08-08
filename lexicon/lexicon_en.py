@@ -1,7 +1,7 @@
 lexicon_dict_en: dict[str, str] = {
     'start': "<b>Hi!\nI'm Iryna Kulikova's bot!</b>\n"
-              "I can tell you all the information about her activities as a manicure master!\n"
-              "<span class='tg-spoiler'>_____________________________________</span>",
+             "I can tell you all the information about her activities as a manicure master!\n"
+             "<span class='tg-spoiler'>_____________________________________</span>",
     '/help': "Here you can find out everything about Iryna Kulikova's work as a manicure Master!\n"
              'If you have any problems with the bot (something does not open), then the bot has been rebooted.'
              'To make everything work correctly, just restart it by writing the command in the chat: '
@@ -45,23 +45,23 @@ lexicon_menu_en: dict[str, str] = {'/st': 'Start me from the beginning!',
                                    }
 
 lexicon_button_en: dict[str, str] = {'button_1': 'My address',
-                                  'button_2': 'My contact phone number',
-                                  'button_3': 'Database of photos of my manicure works',
-                                  'button_4': 'Show a random photo of my manicure',
-                                  'button_5': 'Write to Iryna in Telegram',
-                                  'button_6': 'All information about the work of the wizard',
-                                  'button_7': 'Disinfection and sterilization of the instrument',
-                                  'button_8': 'Price list',
-                                  'button_9': 'My contact details',
-                                  'button_10': 'Go back to the main menu',
-                                  'button_100': 'Information about the bot developer',
-                                  'url_button_1': 'Write to Iryna in Telegram',
-                                  'url_button_2': 'Write to Denis in Telegram'
-                                  }
+                                     'button_2': 'My contact phone number',
+                                     'button_3': 'Database of photos of my manicure works',
+                                     'button_4': 'Show a random photo of my manicure',
+                                     'button_5': 'Write to Iryna in Telegram',
+                                     'button_6': 'All information about the work of the wizard',
+                                     'button_7': 'Disinfection and sterilization of the instrument',
+                                     'button_8': 'Price list',
+                                     'button_9': 'My contact details',
+                                     'button_10': 'Go back to the main menu',
+                                     'button_100': 'Information about the bot developer',
+                                     'url_button_1': 'Write to Iryna in Telegram',
+                                     'url_button_2': 'Write to Denis in Telegram'
+                                     }
 
 lexicon_button_in_en: dict[str, str] = {'button_in_1': 'Further'}
 
-lexicon_disinfection: dict[str, str] = {
+lexicon_disinfection_en: dict[str, str] = {
     'phrase1': 'Everything you need for disinfection and sterilization of manicure tools!',
     'phrase2': '<b>The disinfection and sterilization stages that my manicure tool goes through after each use:</b>'
                '\n<b>1.</b> I pour the disinfectant <b>Medisept Viruton Forte</b> (one of the best products used in '
@@ -75,6 +75,6 @@ lexicon_disinfection: dict[str, str] = {
     'phrase7': '<b>6.</b> I insert the instrument into the sterilizer, in which it is disinfected for 1 minute.',
     'phrase8': '<b>7.</b> After the sterilizer, I rinse the instrument again with a soap solution and dry it.',
     'phrase9': 'This concludes the disinfection and sterilization procedure. <u><b>Our tool is clean, sterile '
-               'and ready for further use.</b></u>\pA you can find other information about my work using the '
+               'and ready for further use.</b></u>\nA you can find other information about my work using the '
                'keyboard at the bottom of the screen👇'
 }
