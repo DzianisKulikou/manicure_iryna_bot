@@ -17,6 +17,8 @@ lexicon_dict_en: dict[str, str] = {
           'with me!',
     'start_manicure': 'In this section you can get acquainted with my works, processes, materials and tools!'
                       '\n(Use the built-in keyboard at the bottom👇)',
+    'manicure_photo': 'This section contains photos of my works!\n'
+                      '(Use the built-in keyboard at the bottom👇)',
     'kontakt': 'In this section you can find my address and contact details.'
                       '\n(Use the built-in keyboard at the bottom👇)',
     'start_menu': 'You have entered the main menu!',
@@ -54,6 +56,7 @@ lexicon_button_en: dict[str, str] = {'button_1': 'My address',
                                      'button_8': 'Price list',
                                      'button_9': 'My contact details',
                                      'button_10': 'Go back to the main menu',
+                                     'button_11': 'Photos of my works',
                                      'button_100': 'Information about the bot developer',
                                      'url_button_1': 'Write to Iryna in Telegram',
                                      'url_button_2': 'Write to Denis in Telegram'

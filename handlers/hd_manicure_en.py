@@ -6,12 +6,19 @@ from aiogram.types import Message, FSInputFile, CallbackQuery
 
 from database.database import users_db
 from database.database_photo import photo_nails, photo_disinfection
-from keyboards.keyboard_manicure import *
+from keyboards.keyboard_manicure import kb_manicure_photo_en, keyboard_in_1_en
 from keyboards.pagination_kb import create_pagination_keyboard
 from lexicon.lexicon_en import lexicon_dict_en, lexicon_disinfection_en
 
 # Инициализируем роутер уровня модуля
 router: Router = Router()
+
+
+# Этот хэндлер будет срабатывать на кнопку 'Photos of my works' [button_11]
+@router.message(Text(text='Photos of my works'))
+async def process_dog_answer(message: Message):
+    if message.from_user.id == message.chat.id:
+        await message.answer(text=lexicon_dict_en['manicure_photo'], reply_markup=kb_manicure_photo_en)
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Manicure Photos' с удалением старого фото [button_3]
