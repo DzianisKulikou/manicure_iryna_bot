@@ -31,7 +31,7 @@ async def process_dog_answer(message: Message):
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_en['photo_selection'])
-        await message.answer_photo(photo=FSInputFile(photo_nails[randint(1, 15)]))  # Список фото
+        await message.answer_photo(photo=FSInputFile(photo_nails[randint(1, 24)]))  # Список фото
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Disinfection and sterilization of the instrument' [button_7]

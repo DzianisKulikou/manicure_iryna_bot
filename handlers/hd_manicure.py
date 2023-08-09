@@ -75,7 +75,7 @@ async def process_forward_press(callback: CallbackQuery):
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['photo_selection'])
-        await message.answer_photo(photo=FSInputFile(photo_nails[randint(1, 15)]))  # Список фото
+        await message.answer_photo(photo=FSInputFile(photo_nails[randint(1, 24)]))  # Список фото
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Дезинфекция и стерилизация инструмента' [button_7]

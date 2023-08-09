@@ -6,7 +6,7 @@ lexicon_dict_en: dict[str, str] = {
              'If you have any problems with the bot (something does not open), then the bot has been rebooted.'
              'To make everything work correctly, just restart it by writing the command in the chat: '
              '"<b>/start</b>". Or click on the command: "<b>/start</b>" - '
-             'in <b>Menu</b> Bot!',
+             'in <b>Menu</b> Bot!\nIf you need to change the language, use the command: "<b>/start</b>"',
     'unknown_message': 'I do not know what to answer you...'
                        '\n(Use the built-in keyboard at the bottom👇)',
     'menu': 'What would you like to know?\n(Use the built-in keyboard at the bottom👇)',
