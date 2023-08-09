@@ -22,8 +22,8 @@ router: Router = Router()
 #         await message.answer_photo(photo=photo)
 
 
-# Этот хэндлер будет срабатывать на кнопку 'База фотографий моих работ маникюра' с удалением старого фото [button_3]
-@router.message(Text(text='База фотографий моих работ маникюра'))
+# Этот хэндлер будет срабатывать на кнопку 'Фотографии маникюра' с удалением старого фото [button_3]
+@router.message(Text(text='Фотографии маникюра'))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['nails'])
@@ -70,8 +70,8 @@ async def process_forward_press(callback: CallbackQuery):
     await callback.answer()
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Показать случайную фотографию моего маникюра' [button_4]
-@router.message(Text(text='Показать случайную фотографию моего маникюра'))
+# Этот хэндлер будет срабатывать на кнопку 'Случайная фотография маникюра' [button_4]
+@router.message(Text(text='Случайная фотография маникюра'))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['photo_selection'])

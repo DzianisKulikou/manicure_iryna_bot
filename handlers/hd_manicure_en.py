@@ -14,8 +14,8 @@ from lexicon.lexicon_en import lexicon_dict_en, lexicon_disinfection_en
 router: Router = Router()
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Database of photos of my manicure works' с удалением старого фото [button_3]
-@router.message(Text(text='Database of photos of my manicure works'))
+# Этот хэндлер будет срабатывать на кнопку 'Manicure Photos' с удалением старого фото [button_3]
+@router.message(Text(text='Manicure Photos'))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_en['nails'])
@@ -26,8 +26,8 @@ async def process_dog_answer(message: Message):
             'forward'))
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Show a random photo of my manicure' [button_4]
-@router.message(Text(text='Show a random photo of my manicure'))
+# Этот хэндлер будет срабатывать на кнопку 'Random manicure photo' [button_4]
+@router.message(Text(text='Random manicure photo'))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_en['photo_selection'])
