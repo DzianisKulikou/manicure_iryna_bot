@@ -7,7 +7,7 @@ from keyboards.kb_main import *
 from keyboards.keyboard_manicure import *
 from keyboards.kb_kontakt import *
 from database.database import users_db, user_dict_template
-from database.database_photo import photo_map, photo_certificates
+from database.database_photo import photo_map
 from copy import deepcopy
 from aiogram import Bot
 
@@ -86,7 +86,7 @@ async def process_dog_answer(message: Message):
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_certificates['cer'])
-        await message.answer_photo(photo=FSInputFile(photo_certificates[1]))
+        await message.answer(text=lexicon_certificates['cer1'])
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Написать Ирине в Telegram'

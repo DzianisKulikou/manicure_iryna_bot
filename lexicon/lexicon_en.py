@@ -65,8 +65,12 @@ lexicon_button_en: dict[str, str] = {'button_1': 'My address',
 
 lexicon_button_in_en: dict[str, str] = {'button_in_1': 'Further'}
 
-lexicon_certificates_en: dict[str, str] = {'cer': 'n this section you can see all my certificates that I received at '
-                                               'the advanced training courses:'}
+lexicon_certificates_en: dict[str, str] = {
+    'cer': 'n this section you can see all my certificates that I received at the advanced training courses:',
+    'cer1': 'Link to the portal to confirm the authenticity of the certificate: https://web.kursy-krasoty-kuzinoi.ru/'
+            'g/42423515586/268c0c5e?v=ZwuBnLxgTMlFzY4EWYiFTN3UzM4YmNzYjY4MGZmBTM2UGNyQ2Lo9CM5EzLjN3LxcTM3kTMvE2LkF2bs'
+            '52dvR2LlxWam9SZjlmdyV2clxWam9Sdy5SZzJXdvNGdldmLzZ2LvoDc0RHa'
+                                           }
 
 lexicon_disinfection_en: dict[str, str] = {
     'phrase1': 'Everything you need for disinfection and sterilization of manicure tools!',

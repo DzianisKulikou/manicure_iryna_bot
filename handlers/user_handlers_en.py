@@ -2,7 +2,7 @@ from aiogram import Router
 from aiogram.filters import Text
 from aiogram.types import Message, FSInputFile
 
-from database.database_photo import photo_map, photo_certificates
+from database.database_photo import photo_map
 from keyboards.kb_kontakt import *
 from keyboards.kb_main import *
 from keyboards.keyboard_manicure import *
@@ -39,7 +39,7 @@ async def process_dog_answer(message: Message):
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_certificates_en['cer'])
-        await message.answer_photo(photo=FSInputFile(photo_certificates[1]))
+        await message.answer(text=lexicon_certificates_en['cer1'])
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Write to Iryna in Telegram'
