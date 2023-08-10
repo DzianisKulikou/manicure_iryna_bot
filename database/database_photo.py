@@ -20,3 +20,5 @@ photo_disinfection: dict[int, str] = {1: 'photo/disinfection/201.jpg', 2: 'photo
                                       9: 'photo/disinfection/209.jpg', 10: 'photo/disinfection/210.jpg',
                                       11: 'photo/disinfection/211.jpg'
                                       }
+
+photo_certificates: dict[int, str] = {1: 'photo/certificates/301.jpg'}

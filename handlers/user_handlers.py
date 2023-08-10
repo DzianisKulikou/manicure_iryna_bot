@@ -1,13 +1,13 @@
 from aiogram import Router
 from aiogram.types import Message, FSInputFile, CallbackQuery
 from aiogram.filters import Command, CommandStart, Text
-from lexicon.lexicon_ru import lexicon_dict_ru
+from lexicon.lexicon_ru import lexicon_dict_ru, lexicon_certificates
 from lexicon.lexicon_en import lexicon_dict_en
 from keyboards.kb_main import *
 from keyboards.keyboard_manicure import *
 from keyboards.kb_kontakt import *
 from database.database import users_db, user_dict_template
-from database.database_photo import photo_map
+from database.database_photo import photo_map, photo_certificates
 from copy import deepcopy
 from aiogram import Bot
 
@@ -79,6 +79,15 @@ async def process_dog_answer(message: Message):
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['price list'])
+
+
+# Этот хэндлер будет срабатывать на кнопку 'Мои сертификаты' [button_12]
+@router.message(Text(text='Мои сертификаты'))
+async def process_dog_answer(message: Message):
+    if message.from_user.id == message.chat.id:
+        await message.answer(text=lexicon_certificates['cer'])
+        await message.answer_photo(photo=FSInputFile(photo_certificates[1]))
+
 
 # Этот хэндлер будет срабатывать на кнопку 'Написать Ирине в Telegram'
 @router.message(Text(text='Написать Ирине в Telegram'))

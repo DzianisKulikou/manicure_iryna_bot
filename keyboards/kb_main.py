@@ -4,25 +4,37 @@ from lexicon.lexicon_en import lexicon_button_en
 
 
 # Создаем объекты кнопок 'Главное Меню' ru
+# Кнопка "Вся информация о работе мастера"
 _button_6: KeyboardButton = KeyboardButton(text=lexicon_button['button_6'])
+# Кнопка "Мои контактные данные"
 _button_9: KeyboardButton = KeyboardButton(text=lexicon_button['button_9'])
+# Кнопка "Прайс лист"
 _button_8: KeyboardButton = KeyboardButton(text=lexicon_button['button_8'])
+# Кнопка "Мои сертификаты"
+_button_12: KeyboardButton = KeyboardButton(text=lexicon_button['button_12'])
+# Кнопка "Информация о разработчике бота"
 _button_100: KeyboardButton = KeyboardButton(text=lexicon_button['button_100'])
 
 # Создаем объекты кнопок 'Главное Меню' en
+# Кнопка "All information about the work of the wizard"
 _button_6_en: KeyboardButton = KeyboardButton(text=lexicon_button_en['button_6'])
+# Кнопка "My contact details"
 _button_9_en: KeyboardButton = KeyboardButton(text=lexicon_button_en['button_9'])
+# Кнопка "Price list"
 _button_8_en: KeyboardButton = KeyboardButton(text=lexicon_button_en['button_8'])
+# Кнопка "My Certificates"
+_button_12_en: KeyboardButton = KeyboardButton(text=lexicon_button_en['button_12'])
+# Кнопка "Information about the bot developer"
 _button_100_en: KeyboardButton = KeyboardButton(text=lexicon_button_en['button_100'])
 
 # Создаем объект клавиатуры, добавляя в него кнопки 'Главное Меню' ru
-keyboard: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_button_6], [_button_8], [_button_9],
-                                                              [_button_100]],
+keyboard: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_button_6], [_button_8, _button_12],
+                                                              [_button_9], [_button_100]],
                                                     resize_keyboard=True)
 
 # Создаем объект клавиатуры, добавляя в него кнопки 'Главное Меню' en
-keyboard_en: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_button_6_en], [_button_8_en], [_button_9_en],
-                                                                 [_button_100_en]],
+keyboard_en: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_button_6_en], [_button_8_en, _button_12_en],
+                                                                 [_button_9_en], [_button_100_en]],
                                                        resize_keyboard=True)
 
 # Создаем объект инлайн-кнопки, ссылка на ТГ аккаунт Мой ru

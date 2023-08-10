@@ -57,12 +57,16 @@ lexicon_button_en: dict[str, str] = {'button_1': 'My address',
                                      'button_9': 'My contact details',
                                      'button_10': 'Go back to the main menu',
                                      'button_11': 'Photos of my works',
+                                     'button_12': 'My Certificates',
                                      'button_100': 'Information about the bot developer',
                                      'url_button_1': 'Write to Iryna in Telegram',
                                      'url_button_2': 'Write to Denis in Telegram'
                                      }
 
 lexicon_button_in_en: dict[str, str] = {'button_in_1': 'Further'}
+
+lexicon_certificates_en: dict[str, str] = {'cer': 'n this section you can see all my certificates that I received at '
+                                               'the advanced training courses:'}
 
 lexicon_disinfection_en: dict[str, str] = {
     'phrase1': 'Everything you need for disinfection and sterilization of manicure tools!',
