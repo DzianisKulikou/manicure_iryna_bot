@@ -1,6 +1,11 @@
+import asyncio
+
 from aiogram import Router
 from aiogram.types import Message, FSInputFile, CallbackQuery
 from aiogram.filters import Command, CommandStart, Text
+from environs import Env
+
+from config_data.config import load_config
 from lexicon.lexicon_ru import lexicon_dict_ru, lexicon_certificates
 from lexicon.lexicon_en import lexicon_dict_en
 from keyboards.kb_main import *
@@ -11,16 +16,34 @@ from database.database_photo import photo_map
 from copy import deepcopy
 from aiogram import Bot
 
+
 # Инициализируем роутер уровня модуля
 router: Router = Router()
 
+# Получаем id каналов бьюти и наша из .env
+env = Env()  # Создаем экземпляр класса Env
+env.read_env()  # Методом read_env() читаем файл .env и загружаем из него переменные в окружение
+config = load_config('.env')
+CHANNEL_ID_NA = config.tg_bot.channel_id_na
+CHANNEL_ID = config.tg_bot.channel_id
 
 # Этот хэндлер срабатывает на команду /start
 @router.message(CommandStart())
 async def process_start_command(message: Message, bot: Bot):
     await bot.send_message(chat_id=message.from_user.id, text=lexicon_dict_ru['/start'], reply_markup=keyboard_in_lg)
+    print(message.chat.id)
     if message.from_user.id not in users_db:
         users_db[message.from_user.id] = deepcopy(user_dict_template)
+
+
+# # реклама в канал
+# @router.message(Text(text='реклама'))
+# async def process_dog_answer(message: Message, bot=None):
+#     await bot.send_message(message.from_user.id, message.chat.id)
+#     while True:
+#         await bot.send_message(chat_id=CHANNEL_ID_NA, text='Привет')
+#         await asyncio.sleep(5)
+
 
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "Русский"
