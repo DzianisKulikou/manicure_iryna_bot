@@ -2,7 +2,7 @@ from environs import Env  # Позволяет сохранять перемен
 from aiogram import Bot, Dispatcher
 from config_data.config import load_config
 from handlers import (other_handlers, user_handlers, user_handlers_en, hd_manicure,
-                      hd_manicure_en)  # Импортируем роутеры из хэндлеров
+                      hd_manicure_en, hd_admin)  # Импортируем роутеры из хэндлеров
 from keyboards.set_menu import set_main_menu
 
 env = Env()  # Создаем экземпляр класса Env
@@ -20,6 +20,7 @@ dp.include_router(user_handlers.router)
 dp.include_router(user_handlers_en.router)
 dp.include_router(hd_manicure.router)
 dp.include_router(hd_manicure_en.router)
+dp.include_router(hd_admin.router)
 dp.include_router(other_handlers.router)
 
 # Запрос к серверу на получение абдейтов для бота
