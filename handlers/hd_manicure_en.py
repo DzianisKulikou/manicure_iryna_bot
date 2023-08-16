@@ -5,10 +5,10 @@ from aiogram.filters import Text
 from aiogram.types import Message, FSInputFile, CallbackQuery
 
 from database.database import users_db
-from database.database_photo import photo_nails, photo_disinfection
-from keyboards.keyboard_manicure import kb_manicure_photo_en, keyboard_in_1_en
+from database.database_photo import photo_nails, photo_disinfection, photo_devices
+from keyboards.keyboard_manicure import kb_manicure_photo_en, keyboard_in_1_en, keyboard_in_2_en
 from keyboards.pagination_kb import create_pagination_keyboard
-from lexicon.lexicon_en import lexicon_dict_en, lexicon_disinfection_en
+from lexicon.lexicon_en import lexicon_dict_en, lexicon_disinfection_en, lexicon_devices_en
 
 # Инициализируем роутер уровня модуля
 router: Router = Router()
@@ -39,6 +39,32 @@ async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_en['photo_selection'])
         await message.answer_photo(photo=FSInputFile(photo_nails[randint(1, 24)]))  # Список фото
+
+
+# Этот хэндлер будет срабатывать на кнопку 'Devices' [button_13]
+@router.message(Text(text='Devices'))
+async def process_dog_answer(message: Message):
+    if message.from_user.id == message.chat.id:
+        await message.answer(text=lexicon_devices_en['devices1'], reply_markup=keyboard_in_2_en)
+
+
+# Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "Дальше >>" для раздела Аппараты
+@router.callback_query(Text(text='button_in_2_en'))
+async def process_button_in_1(callback: CallbackQuery):
+    if users_db[callback.from_user.id]['page_devices'] < 6:
+        users_db[callback.from_user.id]['page_devices'] += 1
+
+        if users_db[callback.from_user.id]['page_devices'] == 2:
+            await callback.message.answer_photo(photo=FSInputFile(photo_devices[1]), reply_markup=keyboard_in_2_en)
+        if users_db[callback.from_user.id]['page_devices'] == 3:
+            await callback.message.answer(text=lexicon_devices_en['devices2'], reply_markup=keyboard_in_2_en)
+        if users_db[callback.from_user.id]['page_devices'] == 4:
+            await callback.message.answer_photo(photo=FSInputFile(photo_devices[2]), reply_markup=keyboard_in_2_en)
+        if users_db[callback.from_user.id]['page_devices'] == 5:
+            await callback.message.answer(text=lexicon_devices_en['devices3'])
+            users_db[callback.from_user.id]['page_devices'] = 1
+
+    await callback.answer()
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Disinfection and sterilization of the instrument' [button_7]

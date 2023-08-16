@@ -1,13 +1,12 @@
 from aiogram import Router
 from aiogram.types import Message, FSInputFile, CallbackQuery
 from aiogram.filters import Text
-from lexicon.lexicon_ru import lexicon_dict_ru, lexicon_disinfection
-from keyboards.keyboard_manicure import kb_manicure_photo, keyboard_in_1
+from lexicon.lexicon_ru import lexicon_dict_ru, lexicon_disinfection, lexicon_devices
+from keyboards.keyboard_manicure import kb_manicure_photo, keyboard_in_1, keyboard_in_2
 from keyboards.pagination_kb import create_pagination_keyboard
 from random import randint
 from database.database import users_db
-from database.database_photo import photo_nails, photo_disinfection
-
+from database.database_photo import photo_nails, photo_disinfection, photo_devices
 
 # Инициализируем роутер уровня модуля
 router: Router = Router()
@@ -76,6 +75,32 @@ async def process_dog_answer(message: Message):
         await message.answer_photo(photo=FSInputFile(photo_nails[randint(1, 24)]))  # Список фото
 
 
+# Этот хэндлер будет срабатывать на кнопку 'Аппараты' [button_13]
+@router.message(Text(text='Аппараты'))
+async def process_dog_answer(message: Message):
+    if message.from_user.id == message.chat.id:
+        await message.answer(text=lexicon_devices['devices1'], reply_markup=keyboard_in_2)
+
+
+# Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "Дальше >>" для раздела Аппараты
+@router.callback_query(Text(text='button_in_2'))
+async def process_button_in_1(callback: CallbackQuery):
+    if users_db[callback.from_user.id]['page_devices'] < 6:
+        users_db[callback.from_user.id]['page_devices'] += 1
+
+        if users_db[callback.from_user.id]['page_devices'] == 2:
+            await callback.message.answer_photo(photo=FSInputFile(photo_devices[1]), reply_markup=keyboard_in_2)
+        if users_db[callback.from_user.id]['page_devices'] == 3:
+            await callback.message.answer(text=lexicon_devices['devices2'], reply_markup=keyboard_in_2)
+        if users_db[callback.from_user.id]['page_devices'] == 4:
+            await callback.message.answer_photo(photo=FSInputFile(photo_devices[2]), reply_markup=keyboard_in_2)
+        if users_db[callback.from_user.id]['page_devices'] == 5:
+            await callback.message.answer(text=lexicon_devices['devices3'])
+            users_db[callback.from_user.id]['page_devices'] = 1
+
+    await callback.answer()
+
+
 # Этот хэндлер будет срабатывать на кнопку 'Дезинфекция и стерилизация инструмента' [button_7]
 @router.message(Text(text='Дезинфекция и стерилизация инструмента'))
 async def process_dog_answer(message: Message):
@@ -83,8 +108,7 @@ async def process_dog_answer(message: Message):
         await message.answer(text=lexicon_disinfection['phrase1'], reply_markup=keyboard_in_1)
 
 
-# Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "Далее"
-# во время просмотра фотографий ногтей
+# Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "Далее" для раздела Дезинфекция
 @router.callback_query(Text(text='button_in_1'))
 async def process_button_in_1(callback: CallbackQuery):
     if users_db[callback.from_user.id]['page_disinfection'] < 21:

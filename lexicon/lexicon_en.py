@@ -58,12 +58,15 @@ lexicon_button_en: dict[str, str] = {'button_1': 'My address',
                                      'button_10': 'Go back to the main menu',
                                      'button_11': 'Photos of my works',
                                      'button_12': 'My Certificates',
+                                     'button_13': 'Devices',
                                      'button_100': 'Information about the bot developer',
                                      'url_button_1': 'Write to Iryna in Telegram',
                                      'url_button_2': 'Write to Denis in Telegram'
                                      }
 
-lexicon_button_in_en: dict[str, str] = {'button_in_1': 'Further'}
+lexicon_button_in_en: dict[str, str] = {'button_in_1': 'Further',
+                                        'button_in_2': 'Further >>'
+                                        }
 
 lexicon_certificates_en: dict[str, str] = {
     'cer': 'n this section you can see all my certificates that I received at the advanced training courses:',
@@ -71,6 +74,25 @@ lexicon_certificates_en: dict[str, str] = {
             'g/42423515586/268c0c5e?v=ZwuBnLxgTMlFzY4EWYiFTN3UzM4YmNzYjY4MGZmBTM2UGNyQ2Lo9CM5EzLjN3LxcTM3kTMvE2LkF2bs'
             '52dvR2LlxWam9SZjlmdyV2clxWam9Sdy5SZzJXdvNGdldmLzZ2LvoDc0RHa'
                                            }
+
+lexicon_devices_en: dict[str, str] = {
+    'devices1': 'This section contains all my main devices that I use for work.',
+    'devices2': 'The SUN X nail lamp is professional, powerful, safe and effective. The lamp is designed for '
+                'polymerization of gel varnishes and gel materials with ice activity. Its power is 54 watts. This '
+                'model is from the category of modern type of UV devices, its equipment provides for the use of new '
+                'LED elements with a wide range of waves for the best polymerization of gel varnishes and gel '
+                'materials with ice activity. The advantage of the lamp is the ability to operate in low-power mode '
+                'with a gradual increase to the maximum value. The inner chamber of the lamp is spacious, which is '
+                'convenient for both manicure and pedicure processes. There are also LED light bulbs in the inner '
+                'chamber. The nail lamp has a removable bottom, which allows you to freely perform the pedicure '
+                'procedure. It is absolutely safe for the skin and eyes, does not contain harmful components. '
+                'Suitable for home and salon use. It will dry any varnish in 30-60 seconds!',
+    'devices3': 'The nail master DM-202 manicure machine has a smooth speed adjustment: from 0 to 35000 revolutions '
+                'per minute. The presence of the reverse function is a change in the direction of rotation of the '
+                'cutter. Ergonomic handle and a comfortable stand for it. Complete absence of vibration. The device '
+                'allows you to quickly and without damage to the nails, remove any old coating, whether it is gel '
+                'polish, acrylic or something else.'
+}
 
 lexicon_disinfection_en: dict[str, str] = {
     'phrase1': 'Everything you need for disinfection and sterilization of manicure tools!',

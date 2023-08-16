@@ -13,6 +13,8 @@ _button_7: KeyboardButton = KeyboardButton(text=lexicon_button['button_7'])
 _button_10: KeyboardButton = KeyboardButton(text=lexicon_button['button_10'])
 # Кнопка "Фотографии моих работ"
 _button_11: KeyboardButton = KeyboardButton(text=lexicon_button['button_11'])
+# Кнопка "Аппараты"
+_button_13: KeyboardButton = KeyboardButton(text=lexicon_button['button_13'])
 
 # Создаем объекты кнопок 'Меню Маникюр' en
 # Кнопка "Manicure Photos"
@@ -25,14 +27,16 @@ _button_7_en: KeyboardButton = KeyboardButton(text=lexicon_button_en['button_7']
 _button_10_en: KeyboardButton = KeyboardButton(text=lexicon_button_en['button_10'])
 # Кнопка "Photos of my works"
 _button_11_en: KeyboardButton = KeyboardButton(text=lexicon_button_en['button_11'])
+# Кнопка "Devices"
+_button_13_en: KeyboardButton = KeyboardButton(text=lexicon_button_en['button_13'])
 
 # Создаем объект клавиатуры "Маникюр" ru
-keyboard_manicure: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_button_11], [_button_7],
+keyboard_manicure: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_button_11], [_button_13], [_button_7],
                                                                        [_button_10]],
                                                              resize_keyboard=True)
 
 # Создаем объект клавиатуры "Маникюр" en
-keyboard_manicure_en: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_button_11_en],
+keyboard_manicure_en: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_button_11_en], [_button_13_en],
                                                                           [_button_7_en], [_button_10_en]],
                                                                 resize_keyboard=True)
 
@@ -46,11 +50,25 @@ kb_manicure_photo_en: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_butt
                                                                           [_button_4_en], [_button_10_en]],
                                                                 resize_keyboard=True)
 
+# Создаем объект инлайн-кнопки "Дальше >>" ru
+_button_in_2: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button_in['button_in_2'],
+                                                          callback_data='button_in_2')
+
+# Создаем объект инлайн-кнопки "Further >>" en
+_button_in_2_en: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button_in_en['button_in_2'],
+                                                             callback_data='button_in_2_en')
+
+# Создаем объект инлайн-клавиатуры с инлайн-кнопкой "Дальше >>" ru
+keyboard_in_2: InlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard=[[_button_in_2]])
+
+# Создаем объект инлайн-клавиатуры с инлайн-кнопкой "Further >>" en
+keyboard_in_2_en: InlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard=[[_button_in_2_en]])
+
 # Создаем объект инлайн-кнопки "Дальше" ru
 _button_in_1: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button_in['button_in_1'],
                                                           callback_data='button_in_1')
 
-# Создаем объект инлайн-кнопки "Дальше" en
+# Создаем объект инлайн-кнопки "Further" en
 _button_in_1_en: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button_in_en['button_in_1'],
                                                              callback_data='button_in_1_en')
 

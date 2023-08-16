@@ -29,7 +29,7 @@ async def process_dog_answer(message: Message, bot=None):
     print(message.chat.id)
     while True:
         await bot.send_message(chat_id=CHANNEL_ID_NA, text='Привет')
-        await asyncio.sleep(5)
+        await asyncio.sleep(86400)  # сутки
 
 
 # Сообщения на канал 'Интересный факт'
@@ -39,8 +39,6 @@ async def process_dog_answer(message: Message, bot=None):
     lst = []
     while True:
         key = randint(1, 10)
-        print(key)
-        print(lst)
         if len(lst) == 6:
             lst = []
         elif key in lst:
@@ -48,4 +46,4 @@ async def process_dog_answer(message: Message, bot=None):
         else:
             await bot.send_message(chat_id=CHANNEL_ID_NA, text=evidence[key])
             lst.append(key)
-            await asyncio.sleep(5)
+            await asyncio.sleep(10800)  # 3 часа
