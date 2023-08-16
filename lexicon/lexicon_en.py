@@ -59,6 +59,7 @@ lexicon_button_en: dict[str, str] = {'button_1': 'My address',
                                      'button_11': 'Photos of my works',
                                      'button_12': 'My Certificates',
                                      'button_13': 'Devices',
+                                     'button_14': 'Gel-polishes',
                                      'button_100': 'Information about the bot developer',
                                      'url_button_1': 'Write to Iryna in Telegram',
                                      'url_button_2': 'Write to Denis in Telegram'
@@ -67,6 +68,8 @@ lexicon_button_en: dict[str, str] = {'button_1': 'My address',
 lexicon_button_in_en: dict[str, str] = {'button_in_1': 'Further',
                                         'button_in_2': 'Further >>'
                                         }
+
+lexicon_b_in_gel_back_en: dict[str, str] = {'_b_in_gel_back': 'Show all gel-polishes'}
 
 lexicon_certificates_en: dict[str, str] = {
     'cer': 'n this section you can see all my certificates that I received at the advanced training courses:',
@@ -110,4 +113,9 @@ lexicon_disinfection_en: dict[str, str] = {
     'phrase9': 'This concludes the disinfection and sterilization procedure. <u><b>Our tool is clean, sterile '
                'and ready for further use.</b></u>\nA you can find other information about my work using the '
                'keyboard at the bottom of the screen👇'
+}
+
+lexicon_gel_polishes_en: dict[str, str] = {
+    'gel_polishes1': 'In this section you can get acquainted with all types of gel varnishes that I have in stock '
+                     'and that I can apply to you.'
 }

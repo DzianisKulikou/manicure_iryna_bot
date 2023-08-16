@@ -5,10 +5,10 @@ from aiogram.filters import Text
 from aiogram.types import Message, FSInputFile, CallbackQuery
 
 from database.database import users_db
-from database.database_photo import photo_nails, photo_disinfection, photo_devices
-from keyboards.keyboard_manicure import kb_manicure_photo_en, keyboard_in_1_en, keyboard_in_2_en
+from database.database_photo import photo_nails, photo_disinfection, photo_devices, photo_gel_polishes
+from keyboards.keyboard_manicure import kb_manicure_photo_en, keyboard_in_1_en, keyboard_in_2_en, kb_in_gel
 from keyboards.pagination_kb import create_pagination_keyboard
-from lexicon.lexicon_en import lexicon_dict_en, lexicon_disinfection_en, lexicon_devices_en
+from lexicon.lexicon_en import lexicon_dict_en, lexicon_disinfection_en, lexicon_devices_en, lexicon_gel_polishes_en
 
 # Инициализируем роутер уровня модуля
 router: Router = Router()
@@ -124,3 +124,17 @@ async def process_button_in_1(callback: CallbackQuery):
             users_db[callback.from_user.id]['page_disinfection'] = 1
 
     await callback.answer()
+
+
+# Этот хэндлер будет срабатывать на кнопку 'Gel-polishes' [button_14]
+@router.message(Text(text='Gel-polishes'))
+async def process_dog_answer(message: Message):
+    if message.from_user.id == message.chat.id:
+        await message.answer(text=lexicon_gel_polishes_en['gel_polishes1'])
+        await message.answer_photo(photo=FSInputFile(photo_gel_polishes[0]), reply_markup=kb_in_gel)
+
+
+# Этот хэндлер будет срабатывать на инлайн-кнопку '_b_in_gel_back_en' [_b_in_gel_back_en]
+@router.callback_query(Text(text='_b_in_gel_back_en'))
+async def process_button_in_1(callback: CallbackQuery):
+    await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[0]), reply_markup=kb_in_gel)
