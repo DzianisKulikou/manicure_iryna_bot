@@ -75,7 +75,6 @@ async def process_dog_answer(message: Message):
 
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "Further"
-# во время просмотра фотографий ногтей
 @router.callback_query(Text(text='button_in_1_en'))
 async def process_button_in_1(callback: CallbackQuery):
     if users_db[callback.from_user.id]['page_disinfection'] < 21:

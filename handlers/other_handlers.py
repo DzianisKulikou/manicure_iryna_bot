@@ -3,6 +3,7 @@ from aiogram.types import Message
 
 from database.database import users_db
 from lexicon.lexicon_en import lexicon_dict_en
+from lexicon.lexicon_pl import lexicon_dict_pl
 from lexicon.lexicon_ru import lexicon_dict_ru
 
 
@@ -18,3 +19,5 @@ async def send_echo(message: Message):
             await message.answer(text=lexicon_dict_ru['unknown_message'])
         elif users_db[message.from_user.id]['language'] == 'en':
             await message.answer(text=lexicon_dict_en['unknown_message'])
+        elif users_db[message.from_user.id]['language'] == 'pl':
+            await message.answer(text=lexicon_dict_pl['unknown_message'])

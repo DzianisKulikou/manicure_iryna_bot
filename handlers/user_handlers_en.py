@@ -12,7 +12,7 @@ from lexicon.lexicon_en import lexicon_dict_en, lexicon_certificates_en
 router: Router = Router()
 
 
-# Этот хэндлер будет срабатывать на кнопку 'My address'
+# Этот хэндлер будет срабатывать на кнопку 'My address' [button_1]
 @router.message(Text(text='My address'))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
@@ -20,14 +20,14 @@ async def process_dog_answer(message: Message):
         await message.answer_photo(photo=FSInputFile(photo_map))
 
 
-# Этот хэндлер будет срабатывать на кнопку 'My contact phone number'
+# Этот хэндлер будет срабатывать на кнопку 'My contact phone number' [button_2]
 @router.message(Text(text='My contact phone number'))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_en['phone'])
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Price list'
+# Этот хэндлер будет срабатывать на кнопку 'Price list' [button_8]
 @router.message(Text(text='Price list'))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
@@ -42,7 +42,7 @@ async def process_dog_answer(message: Message):
         await message.answer(text=lexicon_certificates_en['cer1'])
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Write to Iryna in Telegram'
+# Этот хэндлер будет срабатывать на кнопку 'Write to Iryna in Telegram' [button_5]
 @router.message(Text(text='Write to Iryna in Telegram'))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:

@@ -1,4 +1,6 @@
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup
+
+from lexicon.lexicon_pl import lexicon_button_pl, lexicon_button_in_pl, lexicon_b_in_gel_back_pl
 from lexicon.lexicon_ru import lexicon_button, lexicon_button_in, lexicon_b_in_gel_back
 from lexicon.lexicon_en import lexicon_button_en, lexicon_button_in_en, lexicon_b_in_gel_back_en
 
@@ -34,6 +36,22 @@ _button_13_en: KeyboardButton = KeyboardButton(text=lexicon_button_en['button_13
 # Кнопка "Gel-polishes"
 _button_14_en: KeyboardButton = KeyboardButton(text=lexicon_button_en['button_14'])
 
+# Создаем объекты кнопок 'Меню Маникюр' pl
+# Кнопка "Zdjęcia manicure"
+_button_3_pl: KeyboardButton = KeyboardButton(text=lexicon_button_pl['button_3'])
+# Кнопка "Losowe zdjęcie manicure"
+_button_4_pl: KeyboardButton = KeyboardButton(text=lexicon_button_pl['button_4'])
+# Кнопка "Dezynfekcja i sterylizacja narzędzi"
+_button_7_pl: KeyboardButton = KeyboardButton(text=lexicon_button_pl['button_7'])
+# Кнопка "Powrót do menu głównego"
+_button_10_pl: KeyboardButton = KeyboardButton(text=lexicon_button_pl['button_10'])
+# Кнопка "Zdjęcia moich prac"
+_button_11_pl: KeyboardButton = KeyboardButton(text=lexicon_button_pl['button_11'])
+# Кнопка "Aparatury"
+_button_13_pl: KeyboardButton = KeyboardButton(text=lexicon_button_pl['button_13'])
+# Кнопка "Lakiery żelowe"
+_button_14_pl: KeyboardButton = KeyboardButton(text=lexicon_button_pl['button_14'])
+
 # Создаем объект клавиатуры "Маникюр" ru
 keyboard_manicure: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_button_11], [_button_13, _button_14],
                                                                        [_button_7], [_button_10]],
@@ -43,6 +61,12 @@ keyboard_manicure: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_button_
 keyboard_manicure_en: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_button_11_en],
                                                                           [_button_13_en, _button_14_en],
                                                                           [_button_7_en], [_button_10_en]],
+                                                                resize_keyboard=True)
+
+# Создаем объект клавиатуры "Маникюр" pl
+keyboard_manicure_pl: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_button_11_pl],
+                                                                          [_button_13_pl, _button_14_pl],
+                                                                          [_button_7_pl], [_button_10_pl]],
                                                                 resize_keyboard=True)
 
 # Создаем объект клавиатуры "Фото работ" ru
@@ -55,6 +79,11 @@ kb_manicure_photo_en: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_butt
                                                                           [_button_4_en], [_button_10_en]],
                                                                 resize_keyboard=True)
 
+# Создаем объект клавиатуры "Фото работ" pl
+kb_manicure_photo_pl: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_button_3_pl],
+                                                                          [_button_4_pl], [_button_10_pl]],
+                                                                resize_keyboard=True)
+
 # Создаем объект инлайн-кнопки "Дальше >>" ru
 _button_in_2: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button_in['button_in_2'],
                                                           callback_data='button_in_2')
@@ -63,11 +92,18 @@ _button_in_2: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button_in
 _button_in_2_en: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button_in_en['button_in_2'],
                                                              callback_data='button_in_2_en')
 
+# Создаем объект инлайн-кнопки "Dalej >>" pl
+_button_in_2_pl: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button_in_pl['button_in_2'],
+                                                             callback_data='button_in_2_pl')
+
 # Создаем объект инлайн-клавиатуры с инлайн-кнопкой "Дальше >>" ru
 keyboard_in_2: InlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard=[[_button_in_2]])
 
 # Создаем объект инлайн-клавиатуры с инлайн-кнопкой "Further >>" en
 keyboard_in_2_en: InlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard=[[_button_in_2_en]])
+
+# Создаем объект инлайн-клавиатуры с инлайн-кнопкой "Dalej >>" pl
+keyboard_in_2_pl: InlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard=[[_button_in_2_pl]])
 
 # Создаем объект инлайн-кнопки "Дальше" ru
 _button_in_1: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button_in['button_in_1'],
@@ -77,11 +113,18 @@ _button_in_1: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button_in
 _button_in_1_en: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button_in_en['button_in_1'],
                                                              callback_data='button_in_1_en')
 
+# Создаем объект инлайн-кнопки "Dalej" pl
+_button_in_1_pl: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button_in_pl['button_in_1'],
+                                                             callback_data='button_in_1_pl')
+
 # Создаем объект инлайн-клавиатуры с инлайн-кнопкой "Дальше" ru
 keyboard_in_1: InlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard=[[_button_in_1]])
 
 # Создаем объект инлайн-клавиатуры с инлайн-кнопкой "Дальше" en
 keyboard_in_1_en: InlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard=[[_button_in_1_en]])
+
+# Создаем объект инлайн-клавиатуры с инлайн-кнопкой "Dalej" pl
+keyboard_in_1_pl: InlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard=[[_button_in_1_pl]])
 
 # Создаём объект инлайн-кнопок "Для лаков" ru en pl
 _b_in_gel_1: InlineKeyboardButton = InlineKeyboardButton(text='1', callback_data='_b_in_gel_1')
@@ -107,16 +150,23 @@ kb_in_gel: InlineKeyboardMarkup = InlineKeyboardMarkup(
                      [_b_in_gel_9, _b_in_gel_10, _b_in_gel_11, _b_in_gel_12,
                       _b_in_gel_13, _b_in_gel_14, _b_in_gel_15]])
 
-# Создаём объект инлайн-кнопки "Для лаков" возврат ru
+# Создаём объект инлайн-кнопки "Для лаков возврат" ru
 _b_in_gel_back: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_b_in_gel_back['_b_in_gel_back'],
                                                             callback_data='_b_in_gel_back')
 
 # Создаём объект инлайн-кнопки "Для лаков возврат" en
 _b_in_gel_back_en: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_b_in_gel_back_en['_b_in_gel_back'],
-                                                            callback_data='_b_in_gel_back_en')
+                                                               callback_data='_b_in_gel_back_en')
+
+# Создаём объект инлайн-кнопки "Для лаков возврат" pl
+_b_in_gel_back_pl: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_b_in_gel_back_pl['_b_in_gel_back'],
+                                                               callback_data='_b_in_gel_back_pl')
 
 # Создаем объект инлайн-клавиатуры с инлайн-кнопкой "Для лаков возврат" ru
 kb_in_gel_back: InlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard=[[_b_in_gel_back]])
 
 # Создаем объект инлайн-клавиатуры с инлайн-кнопкой "Для лаков возврат" en
 kb_in_gel_back_en: InlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard=[[_b_in_gel_back_en]])
+
+# Создаем объект инлайн-клавиатуры с инлайн-кнопкой "Для лаков возврат" pl
+kb_in_gel_back_pl: InlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard=[[_b_in_gel_back_pl]])

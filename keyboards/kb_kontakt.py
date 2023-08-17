@@ -1,4 +1,6 @@
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup
+
+from lexicon.lexicon_pl import lexicon_button_pl
 from lexicon.lexicon_ru import lexicon_button
 from lexicon.lexicon_en import lexicon_button_en
 
@@ -8,11 +10,17 @@ _button_2: KeyboardButton = KeyboardButton(text=lexicon_button['button_2'])
 _button_5: KeyboardButton = KeyboardButton(text=lexicon_button['button_5'])
 _button_10: KeyboardButton = KeyboardButton(text=lexicon_button['button_10'])
 
-# Создаем объекты кнопок 'Мои контактные данные' en
+# Создаем объекты кнопок 'My contact details' en
 _button_1_en: KeyboardButton = KeyboardButton(text=lexicon_button_en['button_1'])
 _button_2_en: KeyboardButton = KeyboardButton(text=lexicon_button_en['button_2'])
 _button_5_en: KeyboardButton = KeyboardButton(text=lexicon_button_en['button_5'])
 _button_10_en: KeyboardButton = KeyboardButton(text=lexicon_button_en['button_10'])
+
+# Создаем объекты кнопок 'Moje dane kontaktowe' pl
+_button_1_pl: KeyboardButton = KeyboardButton(text=lexicon_button_pl['button_1'])
+_button_2_pl: KeyboardButton = KeyboardButton(text=lexicon_button_pl['button_2'])
+_button_5_pl: KeyboardButton = KeyboardButton(text=lexicon_button_pl['button_5'])
+_button_10_pl: KeyboardButton = KeyboardButton(text=lexicon_button_pl['button_10'])
 
 # Создаем объект клавиатуры, добавляя в него кнопки 'Главное Меню' ru
 keyboard_kontakt: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_button_1, _button_2], [_button_5],
@@ -24,6 +32,11 @@ keyboard_kontakt_en: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_butto
                                                                          [_button_10_en]],
                                                                resize_keyboard=True)
 
+# Создаем объект клавиатуры, добавляя в него кнопки 'Главное Меню' pl
+keyboard_kontakt_pl: ReplyKeyboardMarkup = ReplyKeyboardMarkup(keyboard=[[_button_1_pl, _button_2_pl], [_button_5_pl],
+                                                                         [_button_10_pl]],
+                                                               resize_keyboard=True)
+
 # Создаем объект инлайн-кнопки, ссылка на ТГ аккаунт Иры ru
 _url_button_1: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button['url_button_1'],
                                                            url='https://t.me/Ir1shka24')
@@ -32,8 +45,15 @@ _url_button_1: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button['
 _url_button_1_en: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button_en['url_button_1'],
                                                               url='https://t.me/Ir1shka24')
 
+# Создаем объект инлайн-кнопки, ссылка на ТГ аккаунт Иры pl
+_url_button_1_pl: InlineKeyboardButton = InlineKeyboardButton(text=lexicon_button_pl['url_button_1'],
+                                                              url='https://t.me/Ir1shka24')
+
 # Создаем объект инлайн-клавиатуры, ссылка на ТГ аккаунт Иры ru
 keyboard_i_1: InlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard=[[_url_button_1]])
 
 # Создаем объект инлайн-клавиатуры, ссылка на ТГ аккаунт Иры en
 keyboard_i_1_en: InlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard=[[_url_button_1_en]])
+
+# Создаем объект инлайн-клавиатуры, ссылка на ТГ аккаунт Иры pl
+keyboard_i_1_pl: InlineKeyboardMarkup = InlineKeyboardMarkup(inline_keyboard=[[_url_button_1_pl]])

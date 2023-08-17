@@ -172,6 +172,8 @@ async def process_b_in_gel_1(callback: CallbackQuery):
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[1]), reply_markup=kb_in_gel_back)
     elif users_db[callback.from_user.id]['language'] == 'en':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[1]), reply_markup=kb_in_gel_back_en)
+    elif users_db[callback.from_user.id]['language'] == 'pl':
+        await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[1]), reply_markup=kb_in_gel_back_pl)
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '2' [_b_in_gel_2]
@@ -181,6 +183,8 @@ async def process_b_in_gel_2(callback: CallbackQuery):
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[2]), reply_markup=kb_in_gel_back)
     elif users_db[callback.from_user.id]['language'] == 'en':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[2]), reply_markup=kb_in_gel_back_en)
+    elif users_db[callback.from_user.id]['language'] == 'pl':
+        await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[2]), reply_markup=kb_in_gel_back_pl)
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '3' [_b_in_gel_3]
@@ -190,6 +194,8 @@ async def process_b_in_gel_3(callback: CallbackQuery):
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[3]), reply_markup=kb_in_gel_back)
     elif users_db[callback.from_user.id]['language'] == 'en':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[3]), reply_markup=kb_in_gel_back_en)
+    elif users_db[callback.from_user.id]['language'] == 'pl':
+        await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[3]), reply_markup=kb_in_gel_back_pl)
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '4' [_b_in_gel_4]
@@ -199,6 +205,8 @@ async def process_b_in_gel_4(callback: CallbackQuery):
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[4]), reply_markup=kb_in_gel_back)
     elif users_db[callback.from_user.id]['language'] == 'en':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[4]), reply_markup=kb_in_gel_back_en)
+    elif users_db[callback.from_user.id]['language'] == 'pl':
+        await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[4]), reply_markup=kb_in_gel_back_pl)
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '5' [_b_in_gel_5]
@@ -208,6 +216,8 @@ async def process_b_in_gel_5(callback: CallbackQuery):
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[5]), reply_markup=kb_in_gel_back)
     elif users_db[callback.from_user.id]['language'] == 'en':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[5]), reply_markup=kb_in_gel_back_en)
+    elif users_db[callback.from_user.id]['language'] == 'pl':
+        await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[5]), reply_markup=kb_in_gel_back_pl)
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '6' [_b_in_gel_6]
@@ -217,6 +227,8 @@ async def process_b_in_gel_6(callback: CallbackQuery):
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[6]), reply_markup=kb_in_gel_back)
     elif users_db[callback.from_user.id]['language'] == 'en':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[6]), reply_markup=kb_in_gel_back_en)
+    elif users_db[callback.from_user.id]['language'] == 'pl':
+        await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[6]), reply_markup=kb_in_gel_back_pl)
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '7' [_b_in_gel_7]
@@ -226,6 +238,8 @@ async def process_b_in_gel_7(callback: CallbackQuery):
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[7]), reply_markup=kb_in_gel_back)
     elif users_db[callback.from_user.id]['language'] == 'en':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[7]), reply_markup=kb_in_gel_back_en)
+    elif users_db[callback.from_user.id]['language'] == 'pl':
+        await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[7]), reply_markup=kb_in_gel_back_pl)
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '8' [_b_in_gel_8]
@@ -235,6 +249,8 @@ async def process_b_in_gel_8(callback: CallbackQuery):
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[8]), reply_markup=kb_in_gel_back)
     elif users_db[callback.from_user.id]['language'] == 'en':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[8]), reply_markup=kb_in_gel_back_en)
+    elif users_db[callback.from_user.id]['language'] == 'pl':
+        await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[8]), reply_markup=kb_in_gel_back_pl)
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '9' [_b_in_gel_9]
@@ -244,6 +260,8 @@ async def process_b_in_gel_9(callback: CallbackQuery):
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[9]), reply_markup=kb_in_gel_back)
     elif users_db[callback.from_user.id]['language'] == 'en':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[9]), reply_markup=kb_in_gel_back_en)
+    elif users_db[callback.from_user.id]['language'] == 'pl':
+        await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[9]), reply_markup=kb_in_gel_back_pl)
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '10' [_b_in_gel_10]
@@ -253,6 +271,8 @@ async def process_b_in_gel_10(callback: CallbackQuery):
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[10]), reply_markup=kb_in_gel_back)
     elif users_db[callback.from_user.id]['language'] == 'en':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[10]), reply_markup=kb_in_gel_back_en)
+    elif users_db[callback.from_user.id]['language'] == 'pl':
+        await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[10]), reply_markup=kb_in_gel_back_pl)
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '11' [_b_in_gel_11]
@@ -262,6 +282,8 @@ async def process_b_in_gel_11(callback: CallbackQuery):
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[11]), reply_markup=kb_in_gel_back)
     elif users_db[callback.from_user.id]['language'] == 'en':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[11]), reply_markup=kb_in_gel_back_en)
+    elif users_db[callback.from_user.id]['language'] == 'pl':
+        await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[11]), reply_markup=kb_in_gel_back_pl)
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '12' [_b_in_gel_12]
@@ -271,6 +293,8 @@ async def process_b_in_gel_12(callback: CallbackQuery):
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[12]), reply_markup=kb_in_gel_back)
     elif users_db[callback.from_user.id]['language'] == 'en':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[12]), reply_markup=kb_in_gel_back_en)
+    elif users_db[callback.from_user.id]['language'] == 'pl':
+        await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[12]), reply_markup=kb_in_gel_back_pl)
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '13' [_b_in_gel_13]
@@ -280,6 +304,8 @@ async def process_b_in_gel_13(callback: CallbackQuery):
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[13]), reply_markup=kb_in_gel_back)
     elif users_db[callback.from_user.id]['language'] == 'en':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[13]), reply_markup=kb_in_gel_back_en)
+    elif users_db[callback.from_user.id]['language'] == 'pl':
+        await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[13]), reply_markup=kb_in_gel_back_pl)
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '14' [_b_in_gel_14]
@@ -289,6 +315,8 @@ async def process_b_in_gel_14(callback: CallbackQuery):
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[14]), reply_markup=kb_in_gel_back)
     elif users_db[callback.from_user.id]['language'] == 'en':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[14]), reply_markup=kb_in_gel_back_en)
+    elif users_db[callback.from_user.id]['language'] == 'pl':
+        await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[14]), reply_markup=kb_in_gel_back_pl)
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '15' [_b_in_gel_15]
@@ -298,6 +326,8 @@ async def process_b_in_gel_15(callback: CallbackQuery):
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[15]), reply_markup=kb_in_gel_back)
     elif users_db[callback.from_user.id]['language'] == 'en':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[15]), reply_markup=kb_in_gel_back_en)
+    elif users_db[callback.from_user.id]['language'] == 'pl':
+        await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[15]), reply_markup=kb_in_gel_back_pl)
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '_b_in_gel_back' [_b_in_gel_back]

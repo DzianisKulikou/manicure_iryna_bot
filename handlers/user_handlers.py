@@ -2,6 +2,7 @@ from aiogram import Router
 from aiogram.types import Message, FSInputFile, CallbackQuery
 from aiogram.filters import Command, CommandStart, Text
 
+from lexicon.lexicon_pl import lexicon_dict_pl
 from lexicon.lexicon_ru import lexicon_dict_ru, lexicon_certificates
 from lexicon.lexicon_en import lexicon_dict_en
 from keyboards.kb_main import *
@@ -21,7 +22,7 @@ router: Router = Router()
 @router.message(CommandStart())
 async def process_start_command(message: Message, bot: Bot):
     await bot.send_message(chat_id=message.from_user.id, text=lexicon_dict_ru['/start'], reply_markup=keyboard_in_lg)
-    print(message.chat.id)
+    print(message.chat.id, message.from_user.id, message.from_user.full_name)  # id chat, id user, name user
     if message.from_user.id not in users_db:
         users_db[message.from_user.id] = deepcopy(user_dict_template)
 
@@ -44,6 +45,15 @@ async def process_button_in_1(callback: CallbackQuery):
     await callback.answer()
 
 
+# Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "Polski"
+@router.callback_query(Text(text='button_in_lg3'))
+async def process_button_in_1(callback: CallbackQuery):
+    users_db[callback.from_user.id]['language'] = 'pl'
+    await callback.message.answer(text=lexicon_dict_pl['start'])
+    await callback.message.answer(text=lexicon_dict_pl['menu'], reply_markup=keyboard_pl)
+    await callback.answer()
+
+
 # @router.message(CommandStart())
 # async def process_start_command(message: Message, bot: Bot):
 #     await bot.send_message(chat_id=message.from_user.id, text=lexicon_dict_ru['/start'])
@@ -60,9 +70,11 @@ async def process_help_command(message: Message):
             await message.answer(text=lexicon_dict_ru['/help'])
         elif users_db[message.from_user.id]['language'] == 'en':
             await message.answer(text=lexicon_dict_en['/help'])
+        elif users_db[message.from_user.id]['language'] == 'pl':
+            await message.answer(text=lexicon_dict_pl['/help'])
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Мой адрес'
+# Этот хэндлер будет срабатывать на кнопку 'Мой адрес' [button_1]
 @router.message(Text(text='Мой адрес'))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
@@ -70,14 +82,14 @@ async def process_dog_answer(message: Message):
         await message.answer_photo(photo=FSInputFile(photo_map))
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон'
+# Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон' [button_2]
 @router.message(Text(text='Мой контактный телефон'))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['phone'])
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Прайс лист'
+# Этот хэндлер будет срабатывать на кнопку 'Прайс лист' [button_8]
 @router.message(Text(text='Прайс лист'))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
@@ -92,7 +104,7 @@ async def process_dog_answer(message: Message):
         await message.answer(text=lexicon_certificates['cer1'])
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Написать Ирине в Telegram'
+# Этот хэндлер будет срабатывать на кнопку 'Написать Ирине в Telegram' [button_5]
 @router.message(Text(text='Написать Ирине в Telegram'))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
