@@ -38,12 +38,12 @@ async def process_dog_answer(message: Message, bot=None):
     print(message.chat.id)
     lst = []
     while True:
-        key = randint(1, 10)
-        if len(lst) == 6:
+        key = randint(1, 100)
+        if len(lst) == 60:
             lst = []
         elif key in lst:
             continue
         else:
-            await bot.send_message(chat_id=CHANNEL_ID_NA, text=evidence[key])
+            await bot.send_message(chat_id=CHANNEL_ID, text=evidence[key])
             lst.append(key)
             await asyncio.sleep(10800)  # 3 часа
