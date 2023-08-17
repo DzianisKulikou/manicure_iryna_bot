@@ -2,6 +2,7 @@ from aiogram import Router
 from aiogram.types import Message, FSInputFile, CallbackQuery
 from aiogram.filters import Command, CommandStart, Text
 
+from keyboards.pagination_kb import create_pagination_kb_ser
 from lexicon.lexicon_pl import lexicon_dict_pl
 from lexicon.lexicon_ru import lexicon_dict_ru, lexicon_certificates
 from lexicon.lexicon_en import lexicon_dict_en
@@ -9,7 +10,7 @@ from keyboards.kb_main import *
 from keyboards.keyboard_manicure import *
 from keyboards.kb_kontakt import *
 from database.database import users_db, user_dict_template
-from database.database_photo import photo_map
+from database.database_photo import photo_map, photo_certificates
 from copy import deepcopy
 from aiogram import Bot
 
@@ -102,6 +103,51 @@ async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_certificates['cer'])
         await message.answer(text=lexicon_certificates['cer1'])
+        index_photo = users_db[message.from_user.id]['page_certificates']
+        await message.answer_photo(
+            photo=FSInputFile(photo_certificates[index_photo]),
+            reply_markup=create_pagination_kb_ser(
+                'backward_cer',
+                f'{users_db[message.from_user.id]["page_certificates"]}/{len(photo_certificates)}',
+                'forward_cer'))
+
+
+# Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "вперед"
+# во время просмотра фотографий сертификатов
+@router.callback_query(Text(text='forward_cer'))
+async def process_forward_press(callback: CallbackQuery):
+    if users_db[callback.from_user.id]['page_certificates'] < len(photo_certificates):
+        users_db[callback.from_user.id]['page_certificates'] += 1
+        index_photo = users_db[callback.from_user.id]['page_certificates']
+        photo = FSInputFile(photo_certificates[index_photo])
+        await callback.message.answer_photo(
+            photo=photo,
+            reply_markup=create_pagination_kb_ser(
+                'backward_cer',
+                f'{users_db[callback.from_user.id]["page_certificates"]}/{len(photo_certificates)}',
+                'forward_cer'))
+    # Удаляем сообщение, в котором была нажата кнопка
+        await callback.message.delete()
+    await callback.answer()
+
+
+# Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "назад"
+# во время просмотра фотографий сертификатов
+@router.callback_query(Text(text='backward_cer'))
+async def process_forward_press(callback: CallbackQuery):
+    if users_db[callback.from_user.id]['page_certificates'] > 1:
+        users_db[callback.from_user.id]['page_certificates'] -= 1
+        index_photo = users_db[callback.from_user.id]['page_certificates']
+        photo = FSInputFile(photo_certificates[index_photo])
+        await callback.message.answer_photo(
+            photo=photo,
+            reply_markup=create_pagination_kb_ser(
+                'backward_cer',
+                f'{users_db[callback.from_user.id]["page_certificates"]}/{len(photo_certificates)}',
+                'forward_cer'))
+        # Удаляем сообщение, в котором была нажата кнопка
+        await callback.message.delete()
+    await callback.answer()
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Написать Ирине в Telegram' [button_5]

@@ -74,9 +74,8 @@ lexicon_b_in_gel_back_pl: dict[str, str] = {'_b_in_gel_back': 'Pokaż wszystkie 
 lexicon_certificates_pl: dict[str, str] = {
     'cer': 'W tej sekcji możesz zobaczyć wszystkie moje certyfikaty, które otrzymałem na kursach doskonalenia '
            'zawodowego:',
-    'cer1': 'Link do portalu, w celu potwierdzenia autentyczności certyfikatu: https://web.kursy-krasoty-kuzinoi.ru/g/'
-            '42423515586/268c0c5e?v=ZwuBnLxgTMlFzY4EWYiFTN3UzM4YmNzYjY4MGZmBTM2UGNyQ2Lo9CM5EzLjN3LxcTM3kTMvE2LkF2b'
-            's52dvR2LlxWam9SZjlmdyV2clxWam9Sdy5SZzJXdvNGdldmLzZ2LvoDc0RHa'
+    'cer1': 'Linki do portali, w celu potwierdzenia autentyczności certyfikatów:'
+            '1) https://web.kursy-krasoty-kuzinoi.ru/pl/329718310?gcmes=42706052522'
                                         }
 
 lexicon_devices_pl: dict[str, str] = {

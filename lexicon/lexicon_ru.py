@@ -52,6 +52,10 @@ lexicon_pagination_kb: dict[str, str] = {'forward': '>>',
                                          'backward': '<<'
                                          }
 
+lexicon_pagination_kb_cer: dict[str, str] = {'forward_cer': '>>>',
+                                             'backward_cer': '<<<'
+                                             }
+
 lexicon_button: dict[str, str] = {'button_1': 'Мой адрес',
                                   'button_2': 'Мой контактный телефон',
                                   'button_3': 'Фотографии маникюра',
@@ -85,9 +89,8 @@ button_in_lg: dict[str, str] = {'button_in_lg1': 'Русский 🇷🇺',
 lexicon_certificates: dict[str, str] = {
     'cer': 'В данном разделе вы сможете увидеть все мои сертификаты, которые я получала на курсах повышения '
            'квалификации:',
-    'cer1': 'Ссылка на портал, для подтверждения подлинности сертификата: https://web.kursy-krasoty-kuzinoi.ru/g/'
-            '42423515586/268c0c5e?v=ZwuBnLxgTMlFzY4EWYiFTN3UzM4YmNzYjY4MGZmBTM2UGNyQ2Lo9CM5EzLjN3LxcTM3kTMvE2LkF2b'
-            's52dvR2LlxWam9SZjlmdyV2clxWam9Sdy5SZzJXdvNGdldmLzZ2LvoDc0RHa'
+    'cer1': 'Ссылки на порталы, для подтверждения подлинности сертификатов:\n'
+            '1) https://web.kursy-krasoty-kuzinoi.ru/pl/329718310?gcmes=42706052522'
                                         }
 
 lexicon_devices: dict[str, str] = {

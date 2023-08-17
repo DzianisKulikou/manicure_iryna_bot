@@ -2,10 +2,12 @@ from aiogram import Router
 from aiogram.filters import Text
 from aiogram.types import Message, FSInputFile
 
-from database.database_photo import photo_map
+from database.database import users_db
+from database.database_photo import photo_map, photo_certificates
 from keyboards.kb_kontakt import keyboard_i_1_pl, keyboard_kontakt_pl
 from keyboards.kb_main import keyboard_pl, keyboard_i_2_pl
 from keyboards.keyboard_manicure import keyboard_manicure_pl
+from keyboards.pagination_kb import create_pagination_kb_ser
 from lexicon.lexicon_pl import lexicon_dict_pl, lexicon_certificates_pl
 
 # Инициализируем роутер уровня модуля
@@ -40,6 +42,13 @@ async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_certificates_pl['cer'])
         await message.answer(text=lexicon_certificates_pl['cer1'])
+        index_photo = users_db[message.from_user.id]['page_certificates']
+        await message.answer_photo(
+            photo=FSInputFile(photo_certificates[index_photo]),
+            reply_markup=create_pagination_kb_ser(
+                'backward_cer',
+                f'{users_db[message.from_user.id]["page_certificates"]}/{len(photo_certificates)}',
+                'forward_cer'))
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Napisz do Iriny w Telegramie' [button_5]
