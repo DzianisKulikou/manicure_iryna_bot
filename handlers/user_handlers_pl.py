@@ -51,8 +51,8 @@ async def process_dog_answer(message: Message):
                 'forward_cer'))
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Napisz do Iriny w Telegramie' [button_5]
-@router.message(Text(text='Napisz do Iriny w Telegramie'))
+# Этот хэндлер будет срабатывать на кнопку 'Napisz do mnie w Telegramie' [button_5]
+@router.message(Text(text='Napisz do mnie w Telegramie'))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_pl['me'], reply_markup=keyboard_i_1_pl)

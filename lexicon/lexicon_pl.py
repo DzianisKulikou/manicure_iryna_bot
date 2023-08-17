@@ -50,7 +50,7 @@ lexicon_button_pl: dict[str, str] = {
     'button_2': 'Mój telefon kontaktowy',
     'button_3': 'Zdjęcia manicure',
     'button_4': 'Losowe zdjęcie manicure',
-    'button_5': 'Napisz do Iriny w Telegramie',
+    'button_5': 'Napisz do mnie w Telegramie',
     'button_6': 'Wszystkie informacje o pracy mistrza',
     'button_7': 'Dezynfekcja i sterylizacja narzędzi',
     'button_8': 'Cennik',

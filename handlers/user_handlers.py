@@ -150,8 +150,8 @@ async def process_forward_press(callback: CallbackQuery):
     await callback.answer()
 
 
-# Этот хэндлер будет срабатывать на кнопку 'Написать Ирине в Telegram' [button_5]
-@router.message(Text(text='Написать Ирине в Telegram'))
+# Этот хэндлер будет срабатывать на кнопку 'Написать мне в Telegram' [button_5]
+@router.message(Text(text='Написать мне в Telegram'))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['me'], reply_markup=keyboard_i_1)
