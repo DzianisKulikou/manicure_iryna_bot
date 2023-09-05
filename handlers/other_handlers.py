@@ -21,3 +21,5 @@ async def send_echo(message: Message):
             await message.answer(text=lexicon_dict_en['unknown_message'])
         elif users_db[message.from_user.id]['language'] == 'pl':
             await message.answer(text=lexicon_dict_pl['unknown_message'])
+        else:
+            await message.answer(text=lexicon_dict_ru['unknown_message'])  # если нет языка
