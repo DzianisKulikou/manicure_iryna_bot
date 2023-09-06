@@ -27,6 +27,11 @@ lexicon_dict_en: dict[str, str] = {
                  'you can contact me by phone: +48789137022. Or by clicking on the button under this message, '
                  'you can write me a private message in a telegram. I can develop a turnkey bot for you according '
                  'to your wishes!',
+    'Channel': '<b>The best channel of the Beauty sphere in Warsaw!</b>\nOn it you will be able to find any master '
+               'from the Beauty sphere near your home and for adequate money. You can also be a model and do the '
+               'necessary procedure for free or at the cost of materials! And if you are a master of the Beauty '
+               'sphere, you will be able to advertise your services, search for clients and models absolutely for '
+               'free! Go to the channel by clicking the button below and join us!',
     'price list': '<u><b>Manicure:</b></u>\n\n'
                   '<b>1.</b> Manicure + gel-polish - 20 zl\n'
                   '<b>2.</b> Manicure + gel strengthening - 20 zl\n'
@@ -60,9 +65,11 @@ lexicon_button_en: dict[str, str] = {'button_1': 'My address',
                                      'button_12': 'My Certificates',
                                      'button_13': 'Devices',
                                      'button_14': 'Gel-polishes',
+                                     'button_15': 'Best TG channel Beauty Warszawa',
                                      'button_100': 'Information about the bot developer',
                                      'url_button_1': 'Write to Iryna in Telegram',
-                                     'url_button_2': 'Write to Denis in Telegram'
+                                     'url_button_2': 'Write to Denis in Telegram',
+                                     'url_button_3': 'Go to the channel 🚀'
                                      }
 
 lexicon_button_in_en: dict[str, str] = {'button_in_1': 'Further',

@@ -26,6 +26,11 @@ lexicon_dict_pl: dict[str, str] = {
                  'możesz skontaktować się ze mną telefonicznie: +48789137022. Lub naciskając przycisk pod tą '
                  'wiadomością, możesz wysłać mi prywatną wiadomość w telegramie. Mogę zaprojektować dla Ciebie bota '
                  'zgodnie z Twoimi pragnieniami pod klucz!',
+    'Channel': '<b>Najlepszy kanał Beauty sfera w Warszawie!</b>\nNa nim znajdziesz każdego mistrza z sfery urody w '
+               'pobliżu domu i za odpowiednie pieniądze. Możesz także być modelem i wykonać pożądaną procedurę za '
+               'darmo lub kosztem materiałów! A jeśli jesteś mistrzem w dziedzinie urody, będziesz mógł reklamować '
+               'swoje usługi, szukać klientów i modeli całkowicie za darmo! Przejdź do kanału za pomocą przycisku '
+               'poniżej i dołącz do nas!',
     'price list': '<u><b>Manicure:</b></u>\n\n'
                   '<b>1.</b> Manicure + lakier żelowy - 20 zl\n'
                   '<b>2.</b> Manicure + żel wzmacniający - 20 zl\n'
@@ -60,9 +65,11 @@ lexicon_button_pl: dict[str, str] = {
     'button_12': 'Moje certyfikaty',
     'button_13': 'Aparatury',
     'button_14': 'Lakiery żelowe',
+    'button_15': 'Najlepszy kanał TG Beauty Warszawa',
     'button_100': 'Informacje o twórcy bota',
     'url_button_1': 'Napisz do Iriny w Telegramie',
-    'url_button_2': 'Napisz do Denisa w Telegramie'
+    'url_button_2': 'Napisz do Denisa w Telegramie',
+    'url_button_3': 'Przejdź do kanału 🚀'
 }
 
 lexicon_button_in_pl: dict[str, str] = {'button_in_1': 'Dalej',

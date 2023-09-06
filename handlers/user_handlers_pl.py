@@ -6,7 +6,7 @@ from database.database import users_db
 from database.database_photo import photo_map, photo_certificates
 from filters.filters import IsBase
 from keyboards.kb_kontakt import keyboard_i_1_pl, keyboard_kontakt_pl
-from keyboards.kb_main import keyboard_pl, keyboard_i_2_pl
+from keyboards.kb_main import keyboard_pl, keyboard_i_2_pl, keyboard_i_3_pl
 from keyboards.keyboard_manicure import keyboard_manicure_pl
 from keyboards.pagination_kb import create_pagination_kb_ser
 from lexicon.lexicon_pl import lexicon_dict_pl, lexicon_certificates_pl
@@ -71,6 +71,13 @@ async def process_dog_answer(message: Message):
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_pl['kontakt'], reply_markup=keyboard_kontakt_pl)
+
+
+# Этот хэндлер будет срабатывать на кнопку 'Najlepszy kanał TG Beauty Warszawa' [button_15]
+@router.message(Text(text='Najlepszy kanał TG Beauty Warszawa'), IsBase(users_db))
+async def process_dog_answer(message: Message):
+    if message.from_user.id == message.chat.id:
+        await message.answer(text=lexicon_dict_pl['Channel'], reply_markup=keyboard_i_3_pl)
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Powrót do menu głównego' [button_10]

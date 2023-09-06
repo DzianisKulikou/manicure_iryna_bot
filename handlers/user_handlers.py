@@ -173,6 +173,13 @@ async def process_dog_answer(message: Message):
         await message.answer(text=lexicon_dict_ru['kontakt'], reply_markup=keyboard_kontakt)
 
 
+# Этот хэндлер будет срабатывать на кнопку 'Лучший ТГ канал Beauty Warszawa' [button_15]
+@router.message(Text(text='Лучший ТГ канал Beauty Warszawa'), IsBase(users_db))
+async def process_dog_answer(message: Message):
+    if message.from_user.id == message.chat.id:
+        await message.answer(text=lexicon_dict_ru['Channel'], reply_markup=keyboard_i_3)
+
+
 # Этот хэндлер будет срабатывать на кнопку 'Вернуться в главное меню' [button_10]
 @router.message(Text(text='Вернуться в главное меню'), IsBase(users_db))
 async def process_dog_answer(message: Message):
