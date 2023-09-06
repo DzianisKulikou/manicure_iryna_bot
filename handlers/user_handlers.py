@@ -2,6 +2,7 @@ from aiogram import Router
 from aiogram.types import Message, FSInputFile, CallbackQuery
 from aiogram.filters import Command, CommandStart, Text
 
+from filters.filters import IsBase
 from keyboards.pagination_kb import create_pagination_kb_ser
 from lexicon.lexicon_pl import lexicon_dict_pl
 from lexicon.lexicon_ru import lexicon_dict_ru, lexicon_certificates
@@ -65,7 +66,7 @@ async def process_button_in_1(callback: CallbackQuery):
 
 
 # Этот хэндлер срабатывает на команду /help
-@router.message(Command(commands='help'))
+@router.message(Command(commands='help'), IsBase(users_db))
 async def process_help_command(message: Message):
     if message.from_user.id == message.chat.id:
         if users_db[message.from_user.id]['language'] == 'ru':
@@ -77,7 +78,7 @@ async def process_help_command(message: Message):
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Мой адрес' [button_1]
-@router.message(Text(text='Мой адрес'))
+@router.message(Text(text='Мой адрес'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['adres'])
@@ -85,21 +86,21 @@ async def process_dog_answer(message: Message):
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Мой контактный телефон' [button_2]
-@router.message(Text(text='Мой контактный телефон'))
+@router.message(Text(text='Мой контактный телефон'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['phone'])
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Прайс лист' [button_8]
-@router.message(Text(text='Прайс лист'))
+@router.message(Text(text='Прайс лист'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['price list'])
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Мои сертификаты' [button_12]
-@router.message(Text(text='Мои сертификаты'))
+@router.message(Text(text='Мои сертификаты'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_certificates['cer'])
@@ -115,7 +116,7 @@ async def process_dog_answer(message: Message):
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "вперед"
 # во время просмотра фотографий сертификатов
-@router.callback_query(Text(text='forward_cer'))
+@router.callback_query(Text(text='forward_cer'), IsBase(users_db))
 async def process_forward_press(callback: CallbackQuery):
     if users_db[callback.from_user.id]['page_certificates'] < len(photo_certificates):
         users_db[callback.from_user.id]['page_certificates'] += 1
@@ -134,7 +135,7 @@ async def process_forward_press(callback: CallbackQuery):
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "назад"
 # во время просмотра фотографий сертификатов
-@router.callback_query(Text(text='backward_cer'))
+@router.callback_query(Text(text='backward_cer'), IsBase(users_db))
 async def process_forward_press(callback: CallbackQuery):
     if users_db[callback.from_user.id]['page_certificates'] > 1:
         users_db[callback.from_user.id]['page_certificates'] -= 1
@@ -152,35 +153,35 @@ async def process_forward_press(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Написать мне в Telegram' [button_5]
-@router.message(Text(text='Написать мне в Telegram'))
+@router.message(Text(text='Написать мне в Telegram'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['me'], reply_markup=keyboard_i_1)
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Вся информация о работе мастера' [button_6]
-@router.message(Text(text='Вся информация о работе мастера'))
+@router.message(Text(text='Вся информация о работе мастера'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['start_manicure'], reply_markup=keyboard_manicure)
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Мои контактные данные' [button_9]
-@router.message(Text(text='Мои контактные данные'))
+@router.message(Text(text='Мои контактные данные'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['kontakt'], reply_markup=keyboard_kontakt)
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Вернуться в главное меню' [button_10]
-@router.message(Text(text='Вернуться в главное меню'))
+@router.message(Text(text='Вернуться в главное меню'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['start_menu'], reply_markup=keyboard)
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Информация о разработчике бота' [button_100]
-@router.message(Text(text='Информация о разработчике бота'))
+@router.message(Text(text='Информация о разработчике бота'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['developer'], reply_markup=keyboard_i_2)

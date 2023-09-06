@@ -6,6 +6,7 @@ from aiogram.types import Message, FSInputFile, CallbackQuery
 
 from database.database import users_db
 from database.database_photo import photo_nails, photo_disinfection, photo_devices, photo_gel_polishes
+from filters.filters import IsBase
 from keyboards.keyboard_manicure import kb_manicure_photo_en, keyboard_in_1_en, keyboard_in_2_en, kb_in_gel
 from keyboards.pagination_kb import create_pagination_keyboard
 from lexicon.lexicon_en import lexicon_dict_en, lexicon_disinfection_en, lexicon_devices_en, lexicon_gel_polishes_en
@@ -15,14 +16,14 @@ router: Router = Router()
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Photos of my works' [button_11]
-@router.message(Text(text='Photos of my works'))
+@router.message(Text(text='Photos of my works'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_en['manicure_photo'], reply_markup=kb_manicure_photo_en)
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Manicure Photos' с удалением старого фото [button_3]
-@router.message(Text(text='Manicure Photos'))
+@router.message(Text(text='Manicure Photos'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_en['nails'])
@@ -34,7 +35,7 @@ async def process_dog_answer(message: Message):
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Random manicure photo' [button_4]
-@router.message(Text(text='Random manicure photo'))
+@router.message(Text(text='Random manicure photo'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_en['photo_selection'])
@@ -42,14 +43,14 @@ async def process_dog_answer(message: Message):
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Devices' [button_13]
-@router.message(Text(text='Devices'))
+@router.message(Text(text='Devices'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_devices_en['devices1'], reply_markup=keyboard_in_2_en)
 
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "Дальше >>" для раздела Аппараты
-@router.callback_query(Text(text='button_in_2_en'))
+@router.callback_query(Text(text='button_in_2_en'), IsBase(users_db))
 async def process_button_in_1(callback: CallbackQuery):
     if users_db[callback.from_user.id]['page_devices'] < 6:
         users_db[callback.from_user.id]['page_devices'] += 1
@@ -68,14 +69,14 @@ async def process_button_in_1(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Disinfection and sterilization of the instrument' [button_7]
-@router.message(Text(text='Disinfection and sterilization of the instrument'))
+@router.message(Text(text='Disinfection and sterilization of the instrument'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_disinfection_en['phrase1'], reply_markup=keyboard_in_1_en)
 
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "Further"
-@router.callback_query(Text(text='button_in_1_en'))
+@router.callback_query(Text(text='button_in_1_en'), IsBase(users_db))
 async def process_button_in_1(callback: CallbackQuery):
     if users_db[callback.from_user.id]['page_disinfection'] < 21:
         users_db[callback.from_user.id]['page_disinfection'] += 1
@@ -126,7 +127,7 @@ async def process_button_in_1(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Gel-polishes' [button_14]
-@router.message(Text(text='Gel-polishes'))
+@router.message(Text(text='Gel-polishes'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_gel_polishes_en['gel_polishes1'])
@@ -134,6 +135,6 @@ async def process_dog_answer(message: Message):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '_b_in_gel_back_en' [_b_in_gel_back_en]
-@router.callback_query(Text(text='_b_in_gel_back_en'))
+@router.callback_query(Text(text='_b_in_gel_back_en'), IsBase(users_db))
 async def process_button_in_1(callback: CallbackQuery):
     await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[0]), reply_markup=kb_in_gel)

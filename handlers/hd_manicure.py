@@ -1,6 +1,8 @@
 from aiogram import Router
 from aiogram.types import Message, FSInputFile, CallbackQuery
 from aiogram.filters import Text
+
+from filters.filters import IsBase
 from lexicon.lexicon_ru import lexicon_dict_ru, lexicon_disinfection, lexicon_devices, lexicon_gel_polishes
 from keyboards.keyboard_manicure import *
 from keyboards.pagination_kb import create_pagination_keyboard
@@ -13,14 +15,14 @@ router: Router = Router()
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Фотографии моих работ' [button_11]
-@router.message(Text(text='Фотографии моих работ'))
+@router.message(Text(text='Фотографии моих работ'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['manicure_photo'], reply_markup=kb_manicure_photo)
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Фотографии маникюра' с удалением старого фото [button_3]
-@router.message(Text(text='Фотографии маникюра'))
+@router.message(Text(text='Фотографии маникюра'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['nails'])
@@ -33,7 +35,7 @@ async def process_dog_answer(message: Message):
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "вперед"
 # во время просмотра фотографий ногтей
-@router.callback_query(Text(text='forward'))
+@router.callback_query(Text(text='forward'), IsBase(users_db))
 async def process_forward_press(callback: CallbackQuery):
     if users_db[callback.from_user.id]['page'] < len(photo_nails):
         users_db[callback.from_user.id]['page'] += 1
@@ -51,7 +53,7 @@ async def process_forward_press(callback: CallbackQuery):
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "назад"
 # во время просмотра фотографий ногтей
-@router.callback_query(Text(text='backward'))
+@router.callback_query(Text(text='backward'), IsBase(users_db))
 async def process_forward_press(callback: CallbackQuery):
     if users_db[callback.from_user.id]['page'] > 1:
         users_db[callback.from_user.id]['page'] -= 1
@@ -68,7 +70,7 @@ async def process_forward_press(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Случайная фотография маникюра' [button_4]
-@router.message(Text(text='Случайная фотография маникюра'))
+@router.message(Text(text='Случайная фотография маникюра'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['photo_selection'])
@@ -76,14 +78,14 @@ async def process_dog_answer(message: Message):
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Аппараты' [button_13]
-@router.message(Text(text='Аппараты'))
+@router.message(Text(text='Аппараты'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_devices['devices1'], reply_markup=keyboard_in_2)
 
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "Дальше >>" для раздела Аппараты
-@router.callback_query(Text(text='button_in_2'))
+@router.callback_query(Text(text='button_in_2'), IsBase(users_db))
 async def process_button_in_1(callback: CallbackQuery):
     if users_db[callback.from_user.id]['page_devices'] < 6:
         users_db[callback.from_user.id]['page_devices'] += 1
@@ -102,14 +104,14 @@ async def process_button_in_1(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Дезинфекция и стерилизация инструмента' [button_7]
-@router.message(Text(text='Дезинфекция и стерилизация инструмента'))
+@router.message(Text(text='Дезинфекция и стерилизация инструмента'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_disinfection['phrase1'], reply_markup=keyboard_in_1)
 
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "Далее" для раздела Дезинфекция
-@router.callback_query(Text(text='button_in_1'))
+@router.callback_query(Text(text='button_in_1'), IsBase(users_db))
 async def process_button_in_1(callback: CallbackQuery):
     if users_db[callback.from_user.id]['page_disinfection'] < 21:
         users_db[callback.from_user.id]['page_disinfection'] += 1
@@ -158,7 +160,7 @@ async def process_button_in_1(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Гель-лаки' [button_14]
-@router.message(Text(text='Гель-лаки'))
+@router.message(Text(text='Гель-лаки'), IsBase(users_db))
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_gel_polishes['gel_polishes1'])
@@ -166,7 +168,7 @@ async def process_dog_answer(message: Message):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '1' [_b_in_gel_1]
-@router.callback_query(Text(text='_b_in_gel_1'))
+@router.callback_query(Text(text='_b_in_gel_1'), IsBase(users_db))
 async def process_b_in_gel_1(callback: CallbackQuery):
     if users_db[callback.from_user.id]['language'] == 'ru':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[1]), reply_markup=kb_in_gel_back)
@@ -177,7 +179,7 @@ async def process_b_in_gel_1(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '2' [_b_in_gel_2]
-@router.callback_query(Text(text='_b_in_gel_2'))
+@router.callback_query(Text(text='_b_in_gel_2'), IsBase(users_db))
 async def process_b_in_gel_2(callback: CallbackQuery):
     if users_db[callback.from_user.id]['language'] == 'ru':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[2]), reply_markup=kb_in_gel_back)
@@ -188,7 +190,7 @@ async def process_b_in_gel_2(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '3' [_b_in_gel_3]
-@router.callback_query(Text(text='_b_in_gel_3'))
+@router.callback_query(Text(text='_b_in_gel_3'), IsBase(users_db))
 async def process_b_in_gel_3(callback: CallbackQuery):
     if users_db[callback.from_user.id]['language'] == 'ru':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[3]), reply_markup=kb_in_gel_back)
@@ -199,7 +201,7 @@ async def process_b_in_gel_3(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '4' [_b_in_gel_4]
-@router.callback_query(Text(text='_b_in_gel_4'))
+@router.callback_query(Text(text='_b_in_gel_4'), IsBase(users_db))
 async def process_b_in_gel_4(callback: CallbackQuery):
     if users_db[callback.from_user.id]['language'] == 'ru':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[4]), reply_markup=kb_in_gel_back)
@@ -210,7 +212,7 @@ async def process_b_in_gel_4(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '5' [_b_in_gel_5]
-@router.callback_query(Text(text='_b_in_gel_5'))
+@router.callback_query(Text(text='_b_in_gel_5'), IsBase(users_db))
 async def process_b_in_gel_5(callback: CallbackQuery):
     if users_db[callback.from_user.id]['language'] == 'ru':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[5]), reply_markup=kb_in_gel_back)
@@ -221,7 +223,7 @@ async def process_b_in_gel_5(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '6' [_b_in_gel_6]
-@router.callback_query(Text(text='_b_in_gel_6'))
+@router.callback_query(Text(text='_b_in_gel_6'), IsBase(users_db))
 async def process_b_in_gel_6(callback: CallbackQuery):
     if users_db[callback.from_user.id]['language'] == 'ru':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[6]), reply_markup=kb_in_gel_back)
@@ -232,7 +234,7 @@ async def process_b_in_gel_6(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '7' [_b_in_gel_7]
-@router.callback_query(Text(text='_b_in_gel_7'))
+@router.callback_query(Text(text='_b_in_gel_7'), IsBase(users_db))
 async def process_b_in_gel_7(callback: CallbackQuery):
     if users_db[callback.from_user.id]['language'] == 'ru':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[7]), reply_markup=kb_in_gel_back)
@@ -243,7 +245,7 @@ async def process_b_in_gel_7(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '8' [_b_in_gel_8]
-@router.callback_query(Text(text='_b_in_gel_8'))
+@router.callback_query(Text(text='_b_in_gel_8'), IsBase(users_db))
 async def process_b_in_gel_8(callback: CallbackQuery):
     if users_db[callback.from_user.id]['language'] == 'ru':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[8]), reply_markup=kb_in_gel_back)
@@ -254,7 +256,7 @@ async def process_b_in_gel_8(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '9' [_b_in_gel_9]
-@router.callback_query(Text(text='_b_in_gel_9'))
+@router.callback_query(Text(text='_b_in_gel_9'), IsBase(users_db))
 async def process_b_in_gel_9(callback: CallbackQuery):
     if users_db[callback.from_user.id]['language'] == 'ru':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[9]), reply_markup=kb_in_gel_back)
@@ -265,7 +267,7 @@ async def process_b_in_gel_9(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '10' [_b_in_gel_10]
-@router.callback_query(Text(text='_b_in_gel_10'))
+@router.callback_query(Text(text='_b_in_gel_10'), IsBase(users_db))
 async def process_b_in_gel_10(callback: CallbackQuery):
     if users_db[callback.from_user.id]['language'] == 'ru':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[10]), reply_markup=kb_in_gel_back)
@@ -276,7 +278,7 @@ async def process_b_in_gel_10(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '11' [_b_in_gel_11]
-@router.callback_query(Text(text='_b_in_gel_11'))
+@router.callback_query(Text(text='_b_in_gel_11'), IsBase(users_db))
 async def process_b_in_gel_11(callback: CallbackQuery):
     if users_db[callback.from_user.id]['language'] == 'ru':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[11]), reply_markup=kb_in_gel_back)
@@ -287,7 +289,7 @@ async def process_b_in_gel_11(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '12' [_b_in_gel_12]
-@router.callback_query(Text(text='_b_in_gel_12'))
+@router.callback_query(Text(text='_b_in_gel_12'), IsBase(users_db))
 async def process_b_in_gel_12(callback: CallbackQuery):
     if users_db[callback.from_user.id]['language'] == 'ru':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[12]), reply_markup=kb_in_gel_back)
@@ -298,7 +300,7 @@ async def process_b_in_gel_12(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '13' [_b_in_gel_13]
-@router.callback_query(Text(text='_b_in_gel_13'))
+@router.callback_query(Text(text='_b_in_gel_13'), IsBase(users_db))
 async def process_b_in_gel_13(callback: CallbackQuery):
     if users_db[callback.from_user.id]['language'] == 'ru':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[13]), reply_markup=kb_in_gel_back)
@@ -309,7 +311,7 @@ async def process_b_in_gel_13(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '14' [_b_in_gel_14]
-@router.callback_query(Text(text='_b_in_gel_14'))
+@router.callback_query(Text(text='_b_in_gel_14'), IsBase(users_db))
 async def process_b_in_gel_14(callback: CallbackQuery):
     if users_db[callback.from_user.id]['language'] == 'ru':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[14]), reply_markup=kb_in_gel_back)
@@ -320,7 +322,7 @@ async def process_b_in_gel_14(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '15' [_b_in_gel_15]
-@router.callback_query(Text(text='_b_in_gel_15'))
+@router.callback_query(Text(text='_b_in_gel_15'), IsBase(users_db))
 async def process_b_in_gel_15(callback: CallbackQuery):
     if users_db[callback.from_user.id]['language'] == 'ru':
         await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[15]), reply_markup=kb_in_gel_back)
@@ -331,6 +333,6 @@ async def process_b_in_gel_15(callback: CallbackQuery):
 
 
 # Этот хэндлер будет срабатывать на инлайн-кнопку '_b_in_gel_back' [_b_in_gel_back]
-@router.callback_query(Text(text='_b_in_gel_back'))
+@router.callback_query(Text(text='_b_in_gel_back'), IsBase(users_db))
 async def process_button_in_1(callback: CallbackQuery):
     await callback.message.answer_photo(photo=FSInputFile(photo_gel_polishes[0]), reply_markup=kb_in_gel)

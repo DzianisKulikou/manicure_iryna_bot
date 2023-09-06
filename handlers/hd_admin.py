@@ -9,7 +9,9 @@ from aiogram.filters import Text, StateFilter
 from aiogram.types import Message, FSInputFile, InputMediaPhoto
 
 from config_data.config import load_config
+from database.database import users_db
 from database.database_photo import photo_nails
+from filters.filters import IsBase
 from lexicon.evidence import evidence
 
 # Инициализируем роутер уровня модуля
@@ -28,7 +30,7 @@ ADMIN_ID = config.tg_bot.admin_id
 
 
 # Правила нашего канала бьюти
-@router.message(Text(text='правила'))
+@router.message(Text(text='правила'), IsBase(users_db))
 async def process_dog_answer(message: Message, bot=None):
     if str(message.from_user.id) in ADMIN_ID:
         print(message.chat.id)
@@ -49,7 +51,7 @@ async def process_dog_answer(message: Message, bot=None):
 
 
 # Сообщения на канал бьюти 'Интересный факт'
-@router.message(Text(text='интересный факт'))
+@router.message(Text(text='интересный факт'), IsBase(users_db))
 async def process_dog_answer(message: Message, bot=None):
     if str(message.from_user.id) in ADMIN_ID:
         print(message.chat.id)
@@ -77,7 +79,7 @@ class FSMFillForm(StatesGroup):
 
 # Этот хэндлер будет срабатывать на команду "объявление"
 # и переводить бота в состояние ожидания ввода дат
-@router.message(Text(text='объявление'), StateFilter(default_state))
+@router.message(Text(text='объявление'), StateFilter(default_state), IsBase(users_db))
 async def process_command(message: Message, state: FSMContext):
     if str(message.from_user.id) in ADMIN_ID:
         await message.answer(text='Введите нужные даты в формате "05.09, 06.09"')
