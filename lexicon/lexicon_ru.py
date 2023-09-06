@@ -1,7 +1,7 @@
 lexicon_dict_ru: dict[str, str] = {
-    '/start': 'Здравствуйте, на каком языке вы предпочитаете общаться?\n\n'
-              'Hello, what language do you prefer to communicate in?\n\n'
-              'Witam, w jakim języku wolisz się komunikować?',
+    '/start': f'Здравствуйте, на каком языке вы предпочитаете общаться?\n\n'
+              f'Hello, what language do you prefer to communicate in?\n\n'
+              f'Witam, w jakim języku wolisz się komunikować?',
     'start': '<b>Привет!\nЯ бот Ирины Куликовой!</b>\n'
               'Я могу рассказать вам всю информацию о её деятельности мастером по маникюру!\n'
               '<span class="tg-spoiler">_____________________________________</span>',

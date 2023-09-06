@@ -23,7 +23,8 @@ router: Router = Router()
 @router.message(CommandStart())
 async def process_start_command(message: Message, bot: Bot):
     await bot.send_message(chat_id=message.from_user.id, text=lexicon_dict_ru['/start'], reply_markup=keyboard_in_lg)
-    print(message.chat.id, message.from_user.id, message.from_user.full_name)  # id chat, id user, name user
+    print(message.chat.id, message.from_user.id, message.from_user.full_name,
+          message.from_user.username)  # id chat, id user, name user
     if message.from_user.id not in users_db:
         users_db[message.from_user.id] = deepcopy(user_dict_template)
 

@@ -5,8 +5,8 @@ from aiogram import Router
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State, default_state
 from environs import Env
-from aiogram.types import Message, FSInputFile
 from aiogram.filters import Text, StateFilter
+from aiogram.types import Message, FSInputFile, InputMediaPhoto
 
 from config_data.config import load_config
 from database.database_photo import photo_nails
@@ -85,42 +85,15 @@ async def process_command(message: Message, state: FSMContext):
         await state.set_state(FSMFillForm.fill_dates)
 
 
-# Этот хэндлер будет срабатывать на ввод дат
-@router.message(StateFilter(FSMFillForm.fill_dates))
-async def process_name_sent(message: Message, state: FSMContext, bot=None):
-    # сохраняем введенные даты в переменную dates
-    dates = message.text
-    # отправляем на канал фото + текст в одном сообщении
-    await bot.send_photo(
-        chat_id=CHANNEL_ID,
-        photo=FSInputFile(photo_nails[randint(1, 24)]),
-        caption=f'Добрый день! Я, <b>Ирина</b> начинающий мастер по маникюру, ищу моделей для отработки техники и '
-                f'скорости по покрытию гель лаком ногтей на: {dates} - начало 10.30 - 12.00, '
-                f'длительность процедуры 3,5 - 4 часа.\n<b><u>ОПЛАТА ТОЛЬКО ЗА МАТЕРИАЛЫ - 20зл.</u></b>\n'
-                f'Варшава, район Stary Mokotow, метро Racławicka.\n'
-                f'Вся информация обо мне, фотографии моих работ, мои контактные данные и другую информацию, '
-                f'можно посмотреть у моего бота:\n'
-                f'https://t.me/Manicure_Iryna_BOT'
-                        )
-
-    # Завершаем машину состояний
-    await state.clear()
-
-
-#  Попытка объединить несколько фото и текст
-#  Этот хэндлер будет срабатывать на ввод дат
+# Этот хэндлер будет срабатывать на ввод дат и выводить 1 фото с текстом
 # @router.message(StateFilter(FSMFillForm.fill_dates))
 # async def process_name_sent(message: Message, state: FSMContext, bot=None):
 #     # сохраняем введенные даты в переменную dates
 #     dates = message.text
-#
-#     media = types.MediaGroup()
-#     media.attach_photo(types.InputFile(photo_nails[randint(1, 24)]))
-#     media.attach_photo(types.InputFile(photo_nails[randint(1, 24)]))
-#
-#     await bot.send_media_group(
+#     # отправляем на канал фото + текст в одном сообщении
+#     await bot.send_photo(
 #         chat_id=CHANNEL_ID,
-#         media=media,
+#         photo=FSInputFile(photo_nails[randint(1, 24)]),
 #         caption=f'Добрый день! Я, <b>Ирина</b> начинающий мастер по маникюру, ищу моделей для отработки техники и '
 #                 f'скорости по покрытию гель лаком ногтей на: {dates} - начало 10.30 - 12.00, '
 #                 f'длительность процедуры 3,5 - 4 часа.\n<b><u>ОПЛАТА ТОЛЬКО ЗА МАТЕРИАЛЫ - 20зл.</u></b>\n'
@@ -132,3 +105,32 @@ async def process_name_sent(message: Message, state: FSMContext, bot=None):
 #
 #     # Завершаем машину состояний
 #     await state.clear()
+
+
+# Этот хэндлер будет срабатывать на ввод дат и выводить 4 фото с текстом
+@router.message(StateFilter(FSMFillForm.fill_dates))
+async def process_name_sent(message: Message, state: FSMContext, bot=None):
+    # сохраняем введенные даты в переменную dates
+    dates = message.text
+    lst = []
+    while len(lst) < 4:
+        x = photo_nails[randint(1, 24)]
+        if x not in lst:
+            lst.append(photo_nails[randint(1, 24)])
+    photo1 = InputMediaPhoto(
+        type='photo',
+        media=FSInputFile(lst[0]),
+        caption=f'Добрый день! Я, <b>Ирина</b> начинающий мастер по маникюру, ищу моделей для отработки техники и '
+                f'скорости по покрытию гель лаком ногтей на: {dates} - начало 10.30 - 12.00, '
+                f'длительность процедуры 3,5 - 4 часа.\n<b><u>ОПЛАТА ТОЛЬКО ЗА МАТЕРИАЛЫ - 20зл.</u></b>\n'
+                f'Варшава, район Stary Mokotow, метро Racławicka.\n'
+                f'Вся информация обо мне, фотографии моих работ, мои контактные данные и другую информацию, '
+                f'можно посмотреть у моего бота:\n'
+                f'https://t.me/Manicure_Iryna_BOT')
+    photo2 = InputMediaPhoto(type='photo', media=FSInputFile(lst[1]))
+    photo3 = InputMediaPhoto(type='photo', media=FSInputFile(lst[2]))
+    photo4 = InputMediaPhoto(type='photo', media=FSInputFile(lst[3]))
+    media = [photo1, photo2, photo3, photo4]
+    await bot.send_media_group(chat_id=CHANNEL_ID, media=media)
+    # Завершаем машину состояний
+    await state.clear()
