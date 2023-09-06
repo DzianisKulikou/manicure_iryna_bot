@@ -95,7 +95,7 @@ async def process_command(message: Message, state: FSMContext):
 #     # отправляем на канал фото + текст в одном сообщении
 #     await bot.send_photo(
 #         chat_id=CHANNEL_ID,
-#         photo=FSInputFile(photo_nails[randint(1, 24)]),
+#         photo=FSInputFile(photo_nails[randint(1, 27)]),
 #         caption=f'Добрый день! Я, <b>Ирина</b> начинающий мастер по маникюру, ищу моделей для отработки техники и '
 #                 f'скорости по покрытию гель лаком ногтей на: {dates} - начало 10.30 - 12.00, '
 #                 f'длительность процедуры 3,5 - 4 часа.\n<b><u>ОПЛАТА ТОЛЬКО ЗА МАТЕРИАЛЫ - 20зл.</u></b>\n'
@@ -116,9 +116,9 @@ async def process_name_sent(message: Message, state: FSMContext, bot=None):
     dates = message.text
     lst = []
     while len(lst) < 4:
-        x = photo_nails[randint(1, 24)]
+        x = photo_nails[randint(1, 27)]
         if x not in lst:
-            lst.append(photo_nails[randint(1, 24)])
+            lst.append(photo_nails[randint(1, 27)])
     photo1 = InputMediaPhoto(
         type='photo',
         media=FSInputFile(lst[0]),

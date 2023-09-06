@@ -6,7 +6,7 @@ from filters.filters import IsBase
 from lexicon.lexicon_ru import lexicon_dict_ru, lexicon_disinfection, lexicon_devices, lexicon_gel_polishes
 from keyboards.keyboard_manicure import *
 from keyboards.pagination_kb import create_pagination_keyboard
-from random import randint
+from random import randint, choice
 from database.database import users_db
 from database.database_photo import photo_nails, photo_disinfection, photo_devices, photo_gel_polishes
 
@@ -74,7 +74,7 @@ async def process_forward_press(callback: CallbackQuery):
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_ru['photo_selection'])
-        await message.answer_photo(photo=FSInputFile(photo_nails[randint(1, 24)]))  # Список фото
+        await message.answer_photo(photo=FSInputFile(photo_nails[randint(1, 27)]))  # Список фото
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Аппараты' [button_13]

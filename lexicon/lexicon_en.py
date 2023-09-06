@@ -6,7 +6,12 @@ lexicon_dict_en: dict[str, str] = {
              'If you have any problems with the bot (something does not open), then the bot has been rebooted.'
              'To make everything work correctly, just restart it by writing the command in the chat: '
              '"<b>/start</b>". Or click on the command: "<b>/start</b>" - '
-             'in <b>Menu</b> Bot!\nIf you need to change the language, use the command: "<b>/start</b>"',
+             'in <b>Menu</b> Bot!\nIf you need to change the language, use the command: "<b>/start</b>"\n'
+             'To control the bot, use the built-in keyboards at the bottom of the screen. They will change '
+             'when you navigate through different sections. The keyboard can also be scrolled up and down (to see '
+             'all the possibilities), like a regular text window in a telegram!\n If you have any questions about '
+             'working with the bot, you can go to the developer information section and ask him all the questions '
+             'directly!\n Have fun working with the bot!)',
     'unknown_message': 'I do not know what to answer you...'
                        '\n(Use the built-in keyboard at the bottom👇)',
     'menu': 'What would you like to know?\n(Use the built-in keyboard at the bottom👇)',

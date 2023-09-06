@@ -39,7 +39,7 @@ async def process_dog_answer(message: Message):
 async def process_dog_answer(message: Message):
     if message.from_user.id == message.chat.id:
         await message.answer(text=lexicon_dict_pl['photo_selection'])
-        await message.answer_photo(photo=FSInputFile(photo_nails[randint(1, 24)]))  # Список фото
+        await message.answer_photo(photo=FSInputFile(photo_nails[randint(1, 27)]))  # Список фото
 
 
 # Этот хэндлер будет срабатывать на кнопку 'Aparatury' [button_13]

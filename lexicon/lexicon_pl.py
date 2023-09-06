@@ -6,7 +6,11 @@ lexicon_dict_pl: dict[str, str] = {
              'Jeśli masz jakieś problemy z działaniem bota (coś się nie otwiera), bot został ponownie załadowany. '
              'Aby wszystko działało poprawnie, po prostu uruchom go ponownie, rejestrując polecenie na czacie: '
              '"<b>/start</b>". Lub kliknij polecenie: "<b>/start</b>" - w '
-             '<b>Menu</b> Bota!\nJeśli chcesz zmienić język, użyj polecenia:"<b>/start</b>"',
+             '<b>Menu</b> Bota!\nJeśli chcesz zmienić język, użyj polecenia:"<b>/start</b>"\n'
+             'Aby kontrolować bota, użyj wbudowanych klawiatur u dołu ekranu. Zmienią się, gdy przejdziesz przez '
+             'różne sekcje. Możesz także przewijać klawiaturę w górę iw dół (aby zobaczyć wszystkie możliwości), '
+             'jak zwykłe okno tekstowe w telegramie!\nJeśli masz pytania dotyczące pracy z botem, możesz przejść '
+             'do sekcji informacji o deweloperze i zadać mu wszystkie pytania bezpośrednio!\n Miłej pracy z botem!)',
     'unknown_message': 'Nie wiem, co ci odpowiedzieć...'
                        '\n(Użyj wbudowanej klawiatury na dole👇)',
     'menu': 'Co chciałbyś wiedzieć?\n(Użyj wbudowanej klawiatury na dole👇)',
