@@ -1,7 +1,9 @@
 from aiogram import Router
 from aiogram.types import Message, FSInputFile, CallbackQuery
 from aiogram.filters import Command, CommandStart, Text
+from environs import Env
 
+from config_data.config import load_config
 from filters.filters import IsBase
 from keyboards.pagination_kb import create_pagination_kb_ser
 from lexicon.lexicon_pl import lexicon_dict_pl
@@ -15,16 +17,26 @@ from database.database_photo import photo_map, photo_certificates
 from copy import deepcopy
 from aiogram import Bot
 
+from datetime import datetime
+
 
 # Инициализируем роутер уровня модуля
 router: Router = Router()
+
+# Получаем данные из .env
+env = Env()  # Создаем экземпляр класса Env
+env.read_env()  # Методом read_env() читаем файл .env и загружаем из него переменные в окружение
+config = load_config('.env')
+MY_ID = config.tg_bot.my_id
 
 
 # Этот хэндлер срабатывает на команду /start
 @router.message(CommandStart())
 async def process_start_command(message: Message, bot: Bot):
+    await bot.send_message(MY_ID, text=f'{datetime.now()}, {message.from_user.id}, {message.from_user.full_name},'
+                           f'{message.from_user.username}')  # Отправка данных мне в ЛС ТГ
     await bot.send_message(chat_id=message.from_user.id, text=lexicon_dict_ru['/start'], reply_markup=keyboard_in_lg)
-    print(message.chat.id, message.from_user.id, message.from_user.full_name,
+    print(datetime.now(), message.from_user.id, message.from_user.full_name,
           message.from_user.username)  # id chat, id user, name user
     if message.from_user.id not in users_db:
         users_db[message.from_user.id] = deepcopy(user_dict_template)

@@ -33,7 +33,7 @@ ADMIN_ID = config.tg_bot.admin_id
 @router.message(Text(text='правила'), IsBase(users_db))
 async def process_dog_answer(message: Message, bot=None):
     if str(message.from_user.id) in ADMIN_ID:
-        print(message.chat.id)
+        print(message.chat.id, 'правила')
         while True:
             await bot.send_message(
                 chat_id=CHANNEL_ID,
@@ -54,7 +54,7 @@ async def process_dog_answer(message: Message, bot=None):
 @router.message(Text(text='интересный факт'), IsBase(users_db))
 async def process_dog_answer(message: Message, bot=None):
     if str(message.from_user.id) in ADMIN_ID:
-        print(message.chat.id)
+        print(message.chat.id, 'интересный факт')
         lst = []
         while True:
             key = randint(1, 100)
@@ -123,7 +123,7 @@ async def process_name_sent(message: Message, state: FSMContext, bot=None):
         type='photo',
         media=FSInputFile(lst[0]),
         caption=f'Добрый день! Я, <b>Ирина</b> начинающий мастер по маникюру, ищу моделей для отработки техники и '
-                f'скорости по покрытию гель лаком ногтей на: {dates} - начало 10.30 - 12.00, '
+                f'скорости по покрытию гель лаком ногтей на: <b><u>{dates} - начало 10.30 - 12.00</u></b>, '
                 f'длительность процедуры 3,5 - 4 часа.\n<b><u>ОПЛАТА ТОЛЬКО ЗА МАТЕРИАЛЫ - 20зл.</u></b>\n'
                 f'Варшава, район Stary Mokotow, метро Racławicka.\n'
                 f'Вся информация обо мне, фотографии моих работ, мои контактные данные и другую информацию, '
