@@ -122,13 +122,13 @@ async def process_name_sent(message: Message, state: FSMContext, bot=None):
     photo1 = InputMediaPhoto(
         type='photo',
         media=FSInputFile(lst[0]),
-        caption=f'Добрый день! Я, <b>Ирина</b> начинающий мастер по маникюру, ищу моделей для отработки техники и '
+        caption=f'Добрый день! Я, <b>Ирина</b> мастер по маникюру, ищу моделей для отработки техники и '
                 f'скорости по покрытию гель лаком ногтей на: <b><u>{dates} - начало 10.30 - 12.00</u></b>, '
-                f'длительность процедуры 3,5 - 4 часа.\n<b><u>ОПЛАТА ТОЛЬКО ЗА МАТЕРИАЛЫ - 20зл.</u></b>\n'
-                f'Варшава, район Stary Mokotow, метро Racławicka.\n'
+                f'длительность процедуры 3,5 - 4 часа.\n<b><u>ОПЛАТА ТОЛЬКО ЗА МАТЕРИАЛЫ - 30зл.</u></b>\n'
+                f'Варшава, район Stary Mokotow, метро Racławicka - 300м.\n'
                 f'Вся информация обо мне, фотографии моих работ, мои контактные данные и другую информацию, '
                 f'можно посмотреть у моего бота:\n'
-                f'https://t.me/Manicure_Iryna_BOT')
+                f'https://t.me/Manicure_Iryna_BOT\nИли спросить в ЛС:\n https://t.me/Ir1shka24')
     photo2 = InputMediaPhoto(type='photo', media=FSInputFile(lst[1]))
     photo3 = InputMediaPhoto(type='photo', media=FSInputFile(lst[2]))
     photo4 = InputMediaPhoto(type='photo', media=FSInputFile(lst[3]))

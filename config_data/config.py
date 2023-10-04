@@ -5,11 +5,12 @@ from environs import Env
 @dataclass
 class TgBot:
     token: str            # Токен для доступа к телеграм-боту
-    channel_id: str       # id канала бьюти
-    channel_id_na: str    # id канала наша
+    channel_id: str       # id канала бьюти Варшава
+    channel_id_na: str    # id канала барахолка Lodz
     my_id: str            # id мой
     ira_id: str           # id Иры
     admin_id: list        # id Мой и Иры
+
 
 @dataclass
 class Config:
