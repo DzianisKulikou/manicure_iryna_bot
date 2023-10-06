@@ -116,9 +116,9 @@ async def process_name_sent(message: Message, state: FSMContext, bot=None):
     dates = message.text
     lst = []
     while len(lst) < 4:
-        x = photo_nails[randint(1, 27)]
+        x = photo_nails[randint(1, 36)]
         if x not in lst:
-            lst.append(photo_nails[randint(1, 27)])
+            lst.append(photo_nails[randint(1, 36)])
     photo1 = InputMediaPhoto(
         type='photo',
         media=FSInputFile(lst[0]),

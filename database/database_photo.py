@@ -11,7 +11,10 @@ photo_nails: dict[int, str] = {1: 'photo/nails/101.jpg', 2: 'photo/nails/102.jpg
                                16: 'photo/nails/116.jpg', 17: 'photo/nails/117.jpg', 18: 'photo/nails/118.jpg',
                                19: 'photo/nails/119.jpg', 20: 'photo/nails/120.jpg', 21: 'photo/nails/121.jpg',
                                22: 'photo/nails/122.jpg', 23: 'photo/nails/123.jpg', 24: 'photo/nails/124.jpg',
-                               25: 'photo/nails/125.jpg', 26: 'photo/nails/126.jpg', 27: 'photo/nails/127.jpg'
+                               25: 'photo/nails/125.jpg', 26: 'photo/nails/126.jpg', 27: 'photo/nails/127.jpg',
+                               28: 'photo/nails/128.jpg', 29: 'photo/nails/129.jpg', 30: 'photo/nails/130.jpg',
+                               31: 'photo/nails/131.jpg', 32: 'photo/nails/132.jpg', 33: 'photo/nails/133.jpg',
+                               34: 'photo/nails/134.jpg', 35: 'photo/nails/135.jpg', 36: 'photo/nails/136.jpg'
                                }
 
 photo_gel_polishes: dict[int, str] = {
